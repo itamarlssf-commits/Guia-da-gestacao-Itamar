@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Guia da Gestação · Dr. Itamar Santana · 2026</title>
+  <meta name="description" content="Guia educativo completo sobre gestação. Com calculadoras de idade gestacional, ganho de peso e hidratação."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Nunito+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    /* ════════════════════════════════════════
+       BRAND TOKENS — Dr. Itamar Santana
+       ════════════════════════════════════════ */
+    :root {
+      /* Primary — Steel Blue */
+      --brand-dark:    #3a5068;
+      --brand:         #4d6585;
+      --brand-mid:     #7a99b2;
+      --brand-light:   #b8cdd8;
+      --brand-pale:    #dde8ef;
+      --brand-ghost:   #f0f5f8;
+
+      /* Warm — Sand & Taupe */
+      --warm-dark:     #6e5545;
+      --warm:          #8a6d58;
+      --warm-mid:      #b59a82;
+      --warm-light:    #e3c99a;
+      --warm-pale:     #f5ede0;
+      --warm-ghost:    #fdf8f2;
+
+      /* Semantic */
+      --success:       #2d7d5a;
+      --success-bg:    #d4ede3;
+      --warning:       #a06020;
+      --warning-bg:    #fdecd0;
+      --danger:        #b02020;
+      --danger-bg:     #fde0e0;
+      --info:          var(--brand);
+      --info-bg:       var(--brand-ghost);
+
+      /* Text */
+      --text:          #1e2c38;
+      --text-secondary:#4a5e6a;
+      --text-muted:    #7a909e;
+      --text-light:    #aabbc6;
+
+      /* Surface */
+      --bg:            #ffffff;
+      --bg-alt:        #f7f9fb;
+      --bg-warm:       var(--warm-ghost);
+      --border:        #d8e4eb;
+      --border-light:  #ebf1f5;
+
+      /* Type */
+      --font-serif:    'Cormorant Garamond', Georgia, serif;
+      --font-sans:     'Nunito Sans', -apple-system, sans-serif;
+
+      /* Geometry */
+      --radius:        16px;
+      --radius-sm:     10px;
+      --radius-xs:     6px;
+
+      /* Shadow */
+      --shadow-sm:     0 1px 4px rgba(58,80,104,.07);
+      --shadow:        0 4px 16px rgba(58,80,104,.10);
+      --shadow-lg:     0 12px 40px rgba(58,80,104,.15);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font-sans);
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── PROGRESS ── */
+    #progress {
+      position: fixed; top: 0; left: 0; height: 3px; z-index: 1100;
+      background: linear-gradient(90deg, var(--brand), var(--warm-light));
+      width: 0%; transition: width .12s ease; border-radius: 0 2px 2px 0;
+    }
+
+    /* ── BACK TO TOP ── */
+    #btt {
+      position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 900;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--brand); color: #fff; border: none;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; box-shadow: var(--shadow);
+      opacity: 0; transform: translateY(8px);
+      transition: all .3s; font-size: 1.1rem;
+    }
+    #btt.visible { opacity: 1; transform: translateY(0); }
+    #btt:hover { background: var(--brand-dark); }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(255,255,255,.97);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-light);
+      box-shadow: 0 1px 0 rgba(58,80,104,.06);
+    }
+    .nav-inner {
+      max-width: 980px; margin: 0 auto; padding: 0 1.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 60px;
+    }
+    .nav-logo { height: 32px; display: block; }
+    .nav-toggle { display: none; background: none; border: 1px solid var(--border); padding: 6px 10px; border-radius: var(--radius-xs); cursor: pointer; color: var(--text-secondary); font-size: .85rem; }
+    .nav-links { display: flex; gap: .1rem; list-style: none; }
+    .nav-links a {
+      font-size: .68rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+      color: var(--text-muted); text-decoration: none; padding: .4rem .6rem;
+      border-radius: var(--radius-xs); transition: all .2s; white-space: nowrap;
+    }
+    .nav-links a:hover { color: var(--brand); background: var(--brand-ghost); }
+    .nav-links .nav-calc a { color: var(--brand); background: var(--brand-ghost); border: 1px solid var(--brand-pale); }
+    .nav-links .nav-calc a:hover { background: var(--brand-pale); }
+
+    /* Drawer */
+    #nav-drawer {
+      display: none; position: fixed; top: 60px; left: 0; right: 0; bottom: 0;
+      background: #fff; z-index: 999; padding: 1.5rem;
+      overflow-y: auto; border-top: 1px solid var(--border-light);
+    }
+    #nav-drawer.open { display: block; }
+    #nav-drawer a {
+      display: flex; align-items: center; gap: .75rem;
+      padding: .85rem 0; font-size: .95rem; color: var(--text);
+      text-decoration: none; border-bottom: 1px solid var(--border-light);
+      font-weight: 500;
+    }
+    #nav-drawer a:last-child { border-bottom: none; }
+    #nav-drawer .drawer-num { color: var(--brand); font-family: var(--font-serif); font-style: italic; font-size: 1.1rem; min-width: 1.5rem; }
+
+    /* ── LAYOUT ── */
+    .container { max-width: 980px; margin: 0 auto; padding: 0 1.5rem; }
+    section { padding: 5rem 0; }
+    section + section { border-top: 1px solid var(--border-light); }
+
+    /* ── HERO ── */
+    #hero {
+      background: linear-gradient(145deg, var(--brand-ghost) 0%, #fff 55%, var(--warm-ghost) 100%);
+      padding: 4rem 0 5rem;
+      position: relative; overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute; top: -120px; right: -80px;
+      width: 480px; height: 480px; border-radius: 50%;
+      background: radial-gradient(circle, var(--brand-pale) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    #hero::after {
+      content: '';
+      position: absolute; bottom: -60px; left: -40px;
+      width: 300px; height: 300px; border-radius: 50%;
+      background: radial-gradient(circle, var(--warm-pale) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--brand); background: var(--brand-ghost);
+      border: 1px solid var(--brand-pale); border-radius: 100px;
+      padding: .3rem .85rem; margin-bottom: 1.5rem;
+    }
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 400; line-height: 1.1; margin-bottom: 1.25rem;
+      color: var(--text);
+    }
+    .hero-title em { color: var(--brand); font-style: italic; }
+    .hero-lead { font-size: 1rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 2rem; }
+    .hero-public-badge {
+      display: inline-flex; align-items: center; gap: .4rem;
+      background: var(--warm-pale); color: var(--warm-dark);
+      border: 1px solid var(--warm-light); border-radius: var(--radius-xs);
+      font-size: .78rem; font-weight: 600; padding: .4rem .9rem;
+    }
+    .hero-right {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      box-shadow: var(--shadow);
+    }
+    .hero-meta-row { display: flex; flex-direction: column; gap: 0; }
+    .hero-meta-item { display: flex; justify-content: space-between; align-items: center; padding: .85rem 0; border-bottom: 1px solid var(--border-light); }
+    .hero-meta-item:last-child { border-bottom: none; }
+    .hm-label { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted); }
+    .hm-val { font-size: .9rem; font-weight: 600; color: var(--text); }
+    .hero-cta {
+      display: flex; gap: .75rem; margin-top: 1.25rem;
+    }
+    .btn-primary {
+      flex: 1; padding: .75rem 1rem; background: var(--brand); color: #fff;
+      border: none; border-radius: var(--radius-sm); font-family: var(--font-sans);
+      font-size: .88rem; font-weight: 600; cursor: pointer; text-align: center;
+      text-decoration: none; display: flex; align-items: center; justify-content: center;
+      gap: .4rem; transition: background .2s;
+    }
+    .btn-primary:hover { background: var(--brand-dark); }
+    .btn-outline {
+      flex: 1; padding: .75rem 1rem;
+      background: transparent; color: var(--brand);
+      border: 1.5px solid var(--brand-light); border-radius: var(--radius-sm);
+      font-family: var(--font-sans); font-size: .88rem; font-weight: 600;
+      cursor: pointer; text-align: center; text-decoration: none;
+      display: flex; align-items: center; justify-content: center;
+      transition: all .2s;
+    }
+    .btn-outline:hover { background: var(--brand-ghost); border-color: var(--brand); }
+
+    /* ── TOC ── */
+    #toc { background: var(--bg-alt); }
+    .section-eyebrow { font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--brand); margin-bottom: .6rem; }
+    .section-title { font-family: var(--font-serif); font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: .5rem; line-height: 1.15; }
+    .section-lead { color: var(--text-secondary); margin-bottom: 2.5rem; max-width: 540px; }
+    .toc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; }
+    .toc-item {
+      display: flex; align-items: flex-start; gap: .85rem;
+      border: 1.5px solid var(--border); border-radius: var(--radius-sm);
+      padding: 1.1rem 1rem; background: var(--bg); text-decoration: none; color: var(--text);
+      transition: all .2s; position: relative; overflow: hidden;
+    }
+    .toc-item::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+      width: 3px; background: var(--brand); opacity: 0; transition: opacity .2s;
+    }
+    .toc-item:hover { border-color: var(--brand-light); box-shadow: var(--shadow-sm); transform: translateY(-1px); }
+    .toc-item:hover::before { opacity: 1; }
+    .toc-num { font-family: var(--font-serif); font-size: 1.4rem; color: var(--brand-light); font-style: italic; line-height: 1; min-width: 1.75rem; flex-shrink: 0; }
+    .toc-title { font-weight: 600; font-size: .88rem; margin-bottom: .2rem; }
+    .toc-desc { font-size: .77rem; color: var(--text-muted); line-height: 1.5; }
+    .toc-calc { border-color: var(--brand-pale); background: var(--brand-ghost); }
+    .toc-calc .toc-num { color: var(--brand); }
+    .toc-calc:hover { border-color: var(--brand); }
+
+    /* ── CHAPTER HEADER ── */
+    .ch-wrap { display: flex; align-items: flex-start; gap: 2rem; margin-bottom: 2.5rem; }
+    .ch-num-block {
+      display: flex; flex-direction: column; align-items: center;
+      flex-shrink: 0;
+    }
+    .ch-num { font-family: var(--font-serif); font-size: clamp(3.5rem, 8vw, 5.5rem); font-style: italic; color: var(--brand-pale); line-height: 1; font-weight: 600; }
+    .ch-line { width: 2px; flex: 1; background: var(--border-light); min-height: 40px; margin-top: .5rem; }
+    .ch-content { padding-top: .5rem; }
+    .ch-eyebrow { font-size: .66rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--brand); margin-bottom: .5rem; }
+    .ch-title { font-family: var(--font-serif); font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 400; line-height: 1.15; margin-bottom: .75rem; }
+    .ch-lead { color: var(--text-secondary); max-width: 580px; line-height: 1.8; font-size: .95rem; }
+
+    /* ── STAT ROW ── */
+    .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 2.5rem; }
+    .stat-card {
+      border: 1.5px solid var(--border); border-radius: var(--radius-sm);
+      padding: 1.25rem; text-align: center; background: var(--bg);
+      position: relative; overflow: hidden;
+    }
+    .stat-card::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 3px; background: linear-gradient(90deg, var(--brand), var(--warm-light));
+    }
+    .stat-num { font-family: var(--font-serif); font-size: 2rem; font-weight: 600; color: var(--brand); line-height: 1; margin-bottom: .35rem; }
+    .stat-label { font-size: .78rem; color: var(--text-muted); line-height: 1.4; }
+
+    /* ── CARDS GRID ── */
+    .cards-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .cards-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .cards-auto { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+    .card {
+      border: 1.5px solid var(--border); border-radius: var(--radius-sm);
+      padding: 1.35rem; background: var(--bg);
+    }
+    .card-title { font-weight: 700; font-size: .92rem; margin-bottom: .5rem; color: var(--text); }
+    .card-text { font-size: .86rem; color: var(--text-secondary); line-height: 1.7; }
+    .card ul { list-style: none; }
+    .card ul li { font-size: .86rem; color: var(--text-secondary); padding: .3rem 0 .3rem 1.1rem; position: relative; line-height: 1.5; }
+    .card ul li::before { content: '·'; position: absolute; left: 0; color: var(--brand-mid); font-weight: bold; font-size: 1.1rem; line-height: 1.4; }
+
+    /* ── ACCORDION ── */
+    .accordion { display: flex; flex-direction: column; gap: .6rem; }
+    .acc-item { border: 1.5px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; background: var(--bg); transition: border-color .2s; }
+    .acc-item.open { border-color: var(--brand-light); }
+    .acc-trigger {
+      width: 100%; display: flex; align-items: center; gap: .85rem; padding: 1rem 1.1rem;
+      background: none; border: none; cursor: pointer; text-align: left; transition: background .2s;
+    }
+    .acc-trigger:hover { background: var(--brand-ghost); }
+    .acc-item.open .acc-trigger { background: var(--brand-ghost); }
+    .acc-letter {
+      width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0;
+      background: var(--brand-ghost); border: 1.5px solid var(--brand-pale);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-serif); font-style: italic; font-size: .9rem; color: var(--brand);
+    }
+    .acc-item.open .acc-letter { background: var(--brand); color: #fff; border-color: var(--brand); }
+    .acc-info { flex: 1; }
+    .acc-title { font-weight: 600; font-size: .92rem; color: var(--text); text-align: left; margin-bottom: .1rem; }
+    .acc-sub { font-size: .78rem; color: var(--text-muted); text-align: left; }
+    .acc-icon { font-size: 1.1rem; color: var(--text-muted); flex-shrink: 0; transition: transform .3s; }
+    .acc-item.open .acc-icon { transform: rotate(45deg); color: var(--brand); }
+    .acc-body { display: none; padding: 0 1.1rem 1.1rem; }
+    .acc-item.open .acc-body { display: block; }
+    .acc-body p { font-size: .88rem; color: var(--text-secondary); line-height: 1.8; margin-top: 1rem; }
+    .acc-cta {
+      display: flex; align-items: center; gap: .5rem; margin-top: .9rem;
+      padding: .7rem .9rem; background: var(--warm-pale);
+      border: 1px solid var(--warm-light); border-radius: var(--radius-xs);
+      font-size: .81rem; color: var(--warm-dark); font-weight: 500;
+    }
+
+    /* ── TABS ── */
+    .tab-bar { display: flex; gap: 0; margin-bottom: 1.5rem; border-bottom: 2px solid var(--border); }
+    .tab-btn {
+      padding: .65rem 1.4rem; border: none; background: none; cursor: pointer;
+      font-family: var(--font-sans); font-size: .84rem; font-weight: 600;
+      color: var(--text-muted); border-bottom: 2px solid transparent; margin-bottom: -2px;
+      transition: all .2s;
+    }
+    .tab-btn.active { color: var(--brand); border-bottom-color: var(--brand); }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .baby-card { border: 1.5px solid var(--border); border-radius: var(--radius-sm); padding: 1.25rem; }
+    .baby-week { font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--brand); margin-bottom: .5rem; }
+    .baby-size { font-size: 1.5rem; margin-bottom: .2rem; }
+    .baby-cm { font-size: .82rem; color: var(--text-muted); margin-bottom: .5rem; font-weight: 600; }
+    .baby-desc { font-size: .84rem; color: var(--text-secondary); line-height: 1.6; }
+
+    /* ── TABLE ── */
+    .data-table { width: 100%; border-collapse: collapse; font-size: .86rem; margin-top: 1.5rem; border: 1.5px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; }
+    .data-table th { background: var(--brand); color: #fff; padding: .8rem 1rem; text-align: left; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
+    .data-table td { padding: .75rem 1rem; border-top: 1px solid var(--border-light); color: var(--text-secondary); }
+    .data-table tr:hover td { background: var(--brand-ghost); }
+    .badge { display: inline-block; padding: .2rem .65rem; border-radius: 100px; font-size: .72rem; font-weight: 700; }
+    .badge-1 { background: var(--warm-pale); color: var(--warm-dark); }
+    .badge-2 { background: var(--brand-ghost); color: var(--brand); }
+    .badge-3 { background: var(--brand-pale); color: var(--brand-dark); }
+
+    /* ── EXAM LIST ── */
+    .period-label { font-size: .66rem; font-weight: 800; text-transform: uppercase; letter-spacing: .12em; color: var(--brand); padding: .4rem 0; border-top: 2px solid var(--brand-pale); margin-top: 2rem; margin-bottom: 1rem; display: flex; align-items: center; gap: .5rem; }
+    .period-label::after { content: ''; flex: 1; height: 1px; background: var(--border-light); }
+    .exam-list { display: flex; flex-direction: column; gap: .4rem; }
+    .exam-row { display: flex; justify-content: space-between; align-items: center; padding: .75rem 1rem; border: 1px solid var(--border-light); border-radius: var(--radius-xs); font-size: .86rem; background: var(--bg); }
+    .exam-row:hover { border-color: var(--brand-pale); background: var(--brand-ghost); }
+    .exam-name { font-weight: 600; color: var(--text); }
+    .exam-freq { font-size: .77rem; color: var(--text-muted); text-align: right; max-width: 55%; }
+
+    /* ── VITAMINS ── */
+    .trim-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 2rem; }
+    .trim-card { border: 1.5px solid var(--border); border-radius: var(--radius-sm); padding: 1.5rem; background: var(--bg); }
+    .trim-pill { display: inline-block; border: 1.5px solid var(--brand-light); border-radius: 100px; font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--brand); padding: .25rem .8rem; margin-bottom: 1rem; background: var(--brand-ghost); }
+    .trim-title { font-family: var(--font-serif); font-size: 1.3rem; margin-bottom: .75rem; }
+    .trim-text { font-size: .88rem; color: var(--text-secondary); line-height: 1.75; margin-bottom: 1rem; }
+    .trim-note { background: var(--brand-ghost); border-left: 3px solid var(--brand); border-radius: 0 var(--radius-xs) var(--radius-xs) 0; padding: .65rem .9rem; font-size: .81rem; color: var(--brand-dark); }
+    .nutrient-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
+    .nutrient-card { border: 1px solid var(--border-light); border-radius: var(--radius-xs); padding: 1.1rem; background: var(--bg-alt); }
+    .nutrient-name { font-size: .82rem; font-weight: 700; color: var(--brand); margin-bottom: .4rem; text-transform: uppercase; letter-spacing: .04em; }
+    .nutrient-desc { font-size: .85rem; color: var(--text-secondary); line-height: 1.65; }
+
+    /* ── FOOD ── */
+    .food-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2rem; }
+    .food-card { border: 1px solid var(--border-light); border-radius: var(--radius-xs); padding: 1.1rem; background: var(--bg-alt); }
+    .food-title { font-weight: 700; font-size: .9rem; margin-bottom: .4rem; }
+    .food-text { font-size: .83rem; color: var(--text-secondary); line-height: 1.6; }
+    .sweetener-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+    .sw-card { border: 1.5px solid var(--border); border-radius: var(--radius-sm); padding: 1.25rem; }
+    .sw-label { font-size: .68rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; margin-bottom: .6rem; }
+    .sw-ok { color: var(--success); }
+    .sw-no { color: var(--danger); }
+    .sw-item { font-size: .88rem; color: var(--text-secondary); padding: .25rem 0; }
+    .avoid-list { display: flex; flex-direction: column; gap: .5rem; }
+    .avoid-item { display: flex; gap: .75rem; align-items: flex-start; border: 1px solid var(--border-light); border-radius: var(--radius-xs); padding: .8rem 1rem; font-size: .86rem; color: var(--text-secondary); background: var(--bg-alt); }
+    .avoid-icon { color: var(--warning); flex-shrink: 0; }
+
+    /* ── VACCINES ── */
+    .vacc-item { border: 1.5px solid var(--border); border-radius: var(--radius-xs); padding: 1rem 1.1rem; margin-bottom: .4rem; }
+    .vacc-item:hover { border-color: var(--brand-light); background: var(--brand-ghost); }
+    .vacc-name { font-weight: 700; font-size: .9rem; margin-bottom: .25rem; color: var(--text); }
+    .vacc-desc { font-size: .84rem; color: var(--text-secondary); line-height: 1.6; }
+
+    /* ── ALERT SECTION ── */
+    #alerts { background: #fff9f9; }
+    .alert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: .75rem; margin-bottom: 1.5rem; }
+    .alert-card { border: 1.5px solid #f0c0c0; border-radius: var(--radius-sm); padding: 1.1rem; background: #fff; }
+    .alert-card:hover { border-color: var(--danger); }
+    .alert-icon { font-size: 1.4rem; margin-bottom: .4rem; }
+    .alert-title { font-weight: 700; font-size: .88rem; margin-bottom: .3rem; }
+    .alert-desc { font-size: .81rem; color: var(--text-secondary); line-height: 1.6; }
+    .alert-banner { background: var(--danger-bg); border: 1.5px solid #f0a0a0; border-radius: var(--radius-sm); padding: 1.25rem 1.5rem; font-size: .9rem; color: var(--danger); font-weight: 600; text-align: center; }
+
+    /* ── CALCULADORAS ── */
+    #calcs { background: var(--bg-alt); }
+    .calc-card { background: var(--bg); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 2rem; box-shadow: var(--shadow-sm); margin-bottom: 1.5rem; }
+    .calc-header { border-bottom: 1px solid var(--border-light); padding-bottom: 1.25rem; margin-bottom: 1.5rem; }
+    .calc-badge { display: inline-flex; align-items: center; gap: .35rem; font-size: .68rem; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; color: var(--brand); background: var(--brand-ghost); border: 1px solid var(--brand-pale); border-radius: 100px; padding: .25rem .75rem; margin-bottom: .75rem; }
+    .calc-title { font-family: var(--font-serif); font-size: 1.6rem; font-weight: 400; margin-bottom: .3rem; }
+    .calc-desc { font-size: .86rem; color: var(--text-muted); }
+    .radio-group { display: flex; gap: 1rem; margin-bottom: 1.25rem; flex-wrap: wrap; }
+    .radio-opt { display: flex; align-items: center; gap: .4rem; cursor: pointer; font-size: .88rem; color: var(--text-secondary); padding: .5rem .75rem; border: 1.5px solid var(--border); border-radius: var(--radius-xs); transition: all .2s; }
+    .radio-opt:has(input:checked) { border-color: var(--brand); background: var(--brand-ghost); color: var(--brand); font-weight: 600; }
+    .radio-opt input { accent-color: var(--brand); cursor: pointer; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    .form-row.single { grid-template-columns: 1fr; }
+    .form-row.triple { grid-template-columns: 1fr 1fr 1fr; }
+    .field { display: flex; flex-direction: column; gap: .35rem; }
+    .field label { font-size: .72rem; font-weight: 800; text-transform: uppercase; letter-spacing: .07em; color: var(--text-muted); }
+    .field input, .field select {
+      padding: .7rem .9rem; border: 1.5px solid var(--border);
+      border-radius: var(--radius-xs); font-family: var(--font-sans);
+      font-size: .92rem; color: var(--text); outline: none;
+      transition: border-color .2s; background: var(--bg);
+    }
+    .field input:focus, .field select:focus { border-color: var(--brand); box-shadow: 0 0 0 3px rgba(77,101,133,.1); }
+    .calc-btn {
+      width: 100%; padding: .9rem; margin-top: .5rem;
+      background: var(--brand); color: #fff; border: none;
+      border-radius: var(--radius-xs); font-family: var(--font-sans);
+      font-size: .95rem; font-weight: 700; cursor: pointer;
+      transition: background .2s; letter-spacing: .02em;
+    }
+    .calc-btn:hover { background: var(--brand-dark); }
+    .calc-result { display: none; margin-top: 1.5rem; border: 1.5px solid var(--brand-pale); border-radius: var(--radius-sm); padding: 1.5rem; background: var(--brand-ghost); }
+    .calc-result.visible { display: block; animation: fadeIn .3s ease; }
+    @keyframes fadeIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
+    .result-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin-bottom: 1rem; }
+    .result-item { text-align: center; background: var(--bg); border: 1px solid var(--border-light); border-radius: var(--radius-xs); padding: 1rem; }
+    .result-num { font-family: var(--font-serif); font-size: 1.9rem; font-weight: 600; color: var(--brand); line-height: 1; }
+    .result-label { font-size: .75rem; color: var(--text-muted); margin-top: .3rem; }
+    .result-sub { font-size: .85rem; color: var(--text-secondary); text-align: center; }
+    .weight-status { display: flex; align-items: center; gap: .6rem; padding: .85rem 1rem; border-radius: var(--radius-xs); margin-top: 1rem; font-size: .87rem; font-weight: 600; }
+    .status-ok { background: var(--success-bg); color: var(--success); }
+    .status-low { background: var(--warning-bg); color: var(--warning); }
+    .status-high { background: var(--danger-bg); color: var(--danger); }
+    .weight-bar-wrap { margin-top: 1rem; }
+    .weight-bar-label { font-size: .76rem; color: var(--text-muted); margin-bottom: .4rem; display: flex; justify-content: space-between; }
+    .weight-bar-track { height: 10px; background: var(--border-light); border-radius: 100px; position: relative; }
+    .weight-bar-range { position: absolute; height: 100%; background: #a7f0d0; border-radius: 100px; }
+    .weight-bar-dot { position: absolute; top: 50%; transform: translate(-50%,-50%); width: 18px; height: 18px; border-radius: 50%; border: 2px solid #fff; background: var(--brand); box-shadow: 0 0 0 2px var(--brand); z-index: 2; }
+    .hydration-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin-top: 1rem; }
+    .hydration-item { text-align: center; background: var(--bg); border: 1px solid var(--border-light); border-radius: var(--radius-xs); padding: 1rem; }
+    .hydration-num { font-family: var(--font-serif); font-size: 1.8rem; font-weight: 600; color: var(--brand); line-height: 1; }
+    .hydration-unit { font-size: .76rem; color: var(--text-muted); margin-top: .25rem; }
+    .usg-fields { display: none; }
+
+    /* ── INFO BOX VARIANTS ── */
+    .infobox { border-radius: var(--radius-xs); padding: 1rem 1.1rem; font-size: .87rem; line-height: 1.7; margin-top: 1rem; }
+    .infobox-brand { background: var(--brand-ghost); border-left: 3px solid var(--brand); color: var(--brand-dark); }
+    .infobox-warm { background: var(--warm-pale); border-left: 3px solid var(--warm-light); color: var(--warm-dark); }
+    .infobox-success { background: var(--success-bg); border-left: 3px solid var(--success); color: var(--success); }
+    .infobox-warning { background: var(--warning-bg); border-left: 3px solid var(--warm-light); color: var(--warning); }
+    .infobox-danger { background: var(--danger-bg); border-left: 3px solid #f0a0a0; color: var(--danger); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: linear-gradient(135deg, var(--brand-dark) 0%, var(--brand) 100%);
+      color: rgba(255,255,255,.7); padding: 3.5rem 0;
+    }
+    .footer-logo { height: 36px; margin-bottom: 1.5rem; filter: brightness(0) invert(1); opacity: .9; }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 3rem; margin-bottom: 2.5rem; }
+    .footer-col-title { font-size: .72rem; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; color: rgba(255,255,255,.5); margin-bottom: .75rem; }
+    .footer-col a { display: block; color: rgba(255,255,255,.65); text-decoration: none; font-size: .86rem; padding: .25rem 0; transition: color .2s; }
+    .footer-col a:hover { color: #fff; }
+    .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,.12); margin-bottom: 1.5rem; }
+    .footer-disclaimer { font-size: .78rem; line-height: 1.75; color: rgba(255,255,255,.5); }
+    .footer-badge { display: inline-flex; align-items: center; gap: .4rem; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15); border-radius: 100px; font-size: .72rem; padding: .3rem .8rem; color: rgba(255,255,255,.6); margin-bottom: .75rem; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-toggle { display: flex; align-items: center; gap: .4rem; }
+      .hero-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .hero-right { display: block; }
+      .toc-grid { grid-template-columns: 1fr 1fr; }
+      .stat-row { grid-template-columns: 1fr 1fr; }
+      .cards-2, .cards-3, .nutrient-grid, .food-grid, .trim-grid, .sweetener-grid { grid-template-columns: 1fr; }
+      .tab-panel.active { grid-template-columns: 1fr; }
+      .form-row, .form-row.triple { grid-template-columns: 1fr; }
+      .result-grid { grid-template-columns: 1fr 1fr; }
+      .hydration-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .ch-num { font-size: 3rem; }
+      .hero-title { font-size: 2.2rem; }
+    }
+    @media (max-width: 480px) {
+      .toc-grid { grid-template-columns: 1fr; }
+      .stat-row { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ── PRINT ── */
+    @media print {
+      nav, #progress, #btt { display: none; }
+      .acc-body { display: block !important; }
+      section { break-inside: avoid; padding: 2rem 0; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- BANNER DIRECT -->
+<div id="direct-banner" style="display:none; background:var(--brand); color:#fff; text-align:center; padding:.6rem 1rem; font-size:.84rem; font-family:var(--font-sans); font-weight:500; position:sticky; top:0; z-index:1200;">
+  📲 Recebeu esse guia pelo direct? <strong>Siga o perfil</strong> para mais conteúdo sobre saúde da mulher →&nbsp;<a href="https://instagram.com/dr.itamarsantana" target="_blank" style="color:var(--warm-light); font-weight:700; text-decoration:none;">@dr.itamarsantana</a>
+  <button onclick="document.getElementById('direct-banner').style.display='none'" style="background:none; border:none; color:rgba(255,255,255,.6); cursor:pointer; margin-left:1rem; font-size:.9rem;">✕</button>
+</div>
+<script>
+if(window.location.search.includes('direct=1') || document.referrer.includes('instagram')){
+  document.getElementById('direct-banner').style.display='block';
+}
+</script>
+
+<div id="progress"></div>
+<button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <img src="data:image/png;base64,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" alt="Dr. Itamar Santana — Ginecologia e Obstetrícia" class="nav-logo"/>
+    <button class="nav-toggle" onclick="toggleDrawer()">☰ Menu</button>
+    <ul class="nav-links">
+      <li><a href="#cap1">Corpo</a></li>
+      <li><a href="#cap2">Sintomas</a></li>
+      <li><a href="#cap3">Bebê</a></li>
+      <li><a href="#cap4">Exames</a></li>
+      <li><a href="#cap5">Vitaminas</a></li>
+      <li><a href="#cap6">Alimentação</a></li>
+      <li><a href="#cap7">Cuidados</a></li>
+      <li><a href="#cap8">Vacinas</a></li>
+      <li><a href="#cap9">Parto</a></li>
+      <li class="nav-calc"><a href="#calcs">🔢 Calculadoras</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div id="nav-drawer">
+  <a href="#cap1" onclick="closeDrawer()"><span class="drawer-num">01</span> Modificações do corpo</a>
+  <a href="#cap2" onclick="closeDrawer()"><span class="drawer-num">02</span> Sintomas comuns</a>
+  <a href="#cap3" onclick="closeDrawer()"><span class="drawer-num">03</span> Desenvolvimento do bebê</a>
+  <a href="#cap4" onclick="closeDrawer()"><span class="drawer-num">04</span> Exames do pré-natal</a>
+  <a href="#cap5" onclick="closeDrawer()"><span class="drawer-num">05</span> Vitaminas essenciais</a>
+  <a href="#cap6" onclick="closeDrawer()"><span class="drawer-num">06</span> Alimentação e nutrição</a>
+  <a href="#cap7" onclick="closeDrawer()"><span class="drawer-num">07</span> Cuidados e prevenção</a>
+  <a href="#cap8" onclick="closeDrawer()"><span class="drawer-num">08</span> Vacinas e proteção</a>
+  <a href="#cap9" onclick="closeDrawer()"><span class="drawer-num">09</span> Parto e amamentação</a>
+  <a href="#calcs" onclick="closeDrawer()"><span class="drawer-num">🔢</span> Calculadoras</a>
+  <a href="#alerts" onclick="closeDrawer()"><span class="drawer-num">⚠</span> Sinais de alerta</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-eyebrow">Guia da Gestação · Edição 2026</div>
+        <h1 class="hero-title">Um manual<br/><em>essencial</em><br/>para você.</h1>
+        <p class="hero-lead">Cuidadosamente elaborado para acompanhar cada etapa da sua jornada — com informação atualizada, orientação prática e o aconchego que esse momento merece. Atendimento online disponível para gestantes em todo o Brasil e no exterior.</p>
+        <div class="hero-public-badge" style="background:var(--warm-pale); border:1.5px solid var(--warm-light); border-radius:var(--radius-xs); padding:.5rem 1rem; font-size:.8rem; font-weight:600; color:var(--warm-dark); display:inline-flex; align-items:center; gap:.4rem;">📋 Versão pública educativa · Sem prescrições medicamentosas · Consulte sempre seu médico</div>
+        <div class="hero-cta" style="margin-top:1.5rem;">
+          <a class="btn-primary" href="#toc">Ver o guia completo</a>
+          <a class="btn-outline" href="#calcs">Calculadoras</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-meta-row">
+          <div class="hero-meta-item"><span class="hm-label">Autor</span><span class="hm-val">Dr. Itamar Santana</span></div>
+          <div class="hero-meta-item"><span class="hm-label">CRM/PE</span><span class="hm-val">23.569 · RQE 9.955</span></div>
+          <div class="hero-meta-item"><span class="hm-label">Especialidade</span><span class="hm-val">Ginecologia & Obstetrícia</span></div>
+          <div class="hero-meta-item"><span class="hm-label">Referências</span><span class="hm-val">FIGO · ACOG · FEBRASGO</span></div>
+          <div class="hero-meta-item"><span class="hm-label">Edição</span><span class="hm-val">2026</span></div>
+        </div>
+        <a href="https://wa.me/5581991839111" target="_blank" style="display:flex; align-items:center; justify-content:center; gap:.5rem; background:var(--warm-pale); color:var(--warm-dark); border:1.5px solid var(--warm-light); border-radius:var(--radius-xs); padding:.75rem; font-size:.86rem; font-weight:700; text-decoration:none; margin-top:1rem; transition:all .2s;" onmouseover="this.style.background='var(--warm-light)'" onmouseout="this.style.background='var(--warm-pale)'">
+          📱 Agendar consulta · (81) 99183-9111
+        </a>
+        <a href="https://instagram.com/dr.itamarsantana" target="_blank" style="display:flex; align-items:center; justify-content:center; gap:.5rem; background:var(--brand-ghost); color:var(--brand); border:1.5px solid var(--brand-pale); border-radius:var(--radius-xs); padding:.75rem; font-size:.86rem; font-weight:700; text-decoration:none; margin-top:.6rem; transition:all .2s;" onmouseover="this.style.background='var(--brand-pale)'" onmouseout="this.style.background='var(--brand-ghost)'">
+          📲 Seguir no Instagram · @dr.itamarsantana
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOC -->
+<section id="toc">
+  <div class="container">
+    <p class="section-eyebrow">Sumário</p>
+    <h2 class="section-title">Nove capítulos,<br/>uma jornada completa.</h2>
+    <p class="section-lead">Toque em qualquer capítulo para navegar diretamente.</p>
+    <div class="toc-grid">
+      <a class="toc-item" href="#cap1"><span class="toc-num">01</span><div><p class="toc-title">Modificações do corpo</p><p class="toc-desc">Transformações desde as primeiras semanas — cardiovascular, respiratório, pele, útero.</p></div></a>
+      <a class="toc-item" href="#cap2"><span class="toc-num">02</span><div><p class="toc-title">Sintomas e mudanças</p><p class="toc-desc">Desconfortos comuns e orientações práticas não farmacológicas.</p></div></a>
+      <a class="toc-item" href="#cap3"><span class="toc-num">03</span><div><p class="toc-title">Desenvolvimento do bebê</p><p class="toc-desc">Crescimento semana a semana e monitoramento dos movimentos fetais.</p></div></a>
+      <a class="toc-item" href="#cap4"><span class="toc-num">04</span><div><p class="toc-title">Exames do pré-natal</p><p class="toc-desc">Calendário completo por trimestre e frequência das consultas.</p></div></a>
+      <a class="toc-item" href="#cap5"><span class="toc-num">05</span><div><p class="toc-title">Vitaminas essenciais</p><p class="toc-desc">O papel de cada nutriente e por que a suplementação é fundamental.</p></div></a>
+      <a class="toc-item" href="#cap6"><span class="toc-num">06</span><div><p class="toc-title">Alimentação e nutrição</p><p class="toc-desc">Princípios, ganho de peso por IMC, segurança alimentar.</p></div></a>
+      <a class="toc-item" href="#cap7"><span class="toc-num">07</span><div><p class="toc-title">Cuidados e prevenção</p><p class="toc-desc">Pele, exercícios, sono, saúde mental, pets, viagens.</p></div></a>
+      <a class="toc-item" href="#cap8"><span class="toc-num">08</span><div><p class="toc-title">Vacinas e proteção</p><p class="toc-desc">Calendário gestacional e estratégia casulo para a família.</p></div></a>
+      <a class="toc-item" href="#cap9"><span class="toc-num">09</span><div><p class="toc-title">Parto e amamentação</p><p class="toc-desc">Sinais de TP, bolsa da maternidade, vias de parto.</p></div></a>
+      <a class="toc-item toc-calc" href="#calcs"><span class="toc-num">🔢</span><div><p class="toc-title">Calculadoras</p><p class="toc-desc">Idade gestacional, ganho de peso e hidratação personalizados.</p></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- CAP 01 -->
+<section id="cap1">
+  <div class="container">
+    <div class="ch-wrap">
+      <div class="ch-num-block"><div class="ch-num">01</div><div class="ch-line"></div></div>
+      <div class="ch-content">
+        <p class="ch-eyebrow">Capítulo Um</p>
+        <h2 class="ch-title">Modificações iniciais<br/>do seu corpo.</h2>
+        <p class="ch-lead">Desde a concepção, o corpo inicia transformações orquestradas por hCG, progesterona e estrogênio — criando o ambiente perfeito para o desenvolvimento do bebê.</p>
+      </div>
+    </div>
+    <div class="stat-row">
+      <div class="stat-card"><p class="stat-num">+50%</p><p class="stat-label">Volume sanguíneo na gestação</p></div>
+      <div class="stat-card"><p class="stat-num">+15%</p><p class="stat-label">Metabolismo basal</p></div>
+      <div class="stat-card"><p class="stat-num">10×</p><p class="stat-label">Fluxo sanguíneo uterino</p></div>
+      <div class="stat-card"><p class="stat-num">1.100g</p><p class="stat-label">Peso final do útero</p></div>
+    </div>
+    <div class="cards-2">
+      <div class="card"><p class="card-title">Sistema cardiovascular</p><ul><li>Volume sanguíneo aumenta até 50%</li><li>Frequência cardíaca elevada em 10–15 bpm</li><li>Pressão arterial pode reduzir no 2º trimestre</li><li>Maior trabalho do coração para suprir o bebê</li></ul></div>
+      <div class="card"><p class="card-title">Sistema respiratório</p><ul><li>Aumento da capacidade respiratória</li><li>Sensação de falta de ar é comum</li><li>Respiração mais profunda pela progesterona</li><li>Expansão progressiva da caixa torácica</li></ul></div>
+      <div class="card"><p class="card-title">Mamas</p><ul><li>Aumento e sensibilidade desde as primeiras semanas</li><li>Aréolas escurecem progressivamente</li><li>Tubérculos de Montgomery evidentes</li><li>Preparação ativa para a amamentação</li></ul></div>
+      <div class="card"><p class="card-title">Pele</p><ul><li>Hiperpigmentação na linha alba (linha nigra)</li><li>Melasma facial pela ação hormonal</li><li>Estrias pelo estiramento progressivo</li><li>Oleosidade ou ressecamento aumentados</li></ul></div>
+      <div class="card"><p class="card-title">Útero</p><ul><li>Cresce de ~70g para 1.100g ao final</li><li>Expande da pelve para a cavidade abdominal</li><li>Fluxo sanguíneo uterino aumenta até 10×</li></ul></div>
+      <div class="card"><p class="card-title">Sistema digestivo e renal</p><ul><li>Esvaziamento gástrico mais lento — náuseas e refluxo</li><li>Constipação intestinal é comum</li><li>Rins filtram mais sangue — maior frequência urinária</li><li>Hidrate-se: mínimo 50 mL por kg/dia</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- CAP 02 -->
+<section id="cap2">
+  <div class="container">
+    <div class="ch-wrap">
+      <div class="ch-num-block"><div class="ch-num">02</div><div class="ch-line"></div></div>
+      <div class="ch-content">
+        <p class="ch-eyebrow">Capítulo Dois</p>
+        <h2 class="ch-title">Sintomas comuns &<br/>como manejá-los.</h2>
+        <p class="ch-lead">Orientações práticas e não farmacológicas. Para qualquer medicamento, consulte sempre seu médico — nenhum deve ser tomado por conta própria durante a gestação.</p>
+      </div>
+    </div>
+    <div class="accordion">
+      <div class="acc-item open">
+        <button class="acc-trigger" onclick="toggleAcc(this)">
+          <span class="acc-letter">A</span>
+          <div class="acc-info"><p class="acc-title">Dor de cabeça e febre</p><p class="acc-sub">Comuns por alterações hormonais e aumento do volume sanguíneo</p></div>
+          <span class="acc-icon">+</span>
+        </button>
+        <div class="acc-body">
+          <p>Mantenha-se hidratada, descanse em ambientes frescos e evite jejum prolongado. Compressas frias na testa ajudam. Febre acima de 38 °C deve ser comunicada ao médico imediatamente.</p>
+          <div class="acc-cta">⚕ Para qualquer medicamento, consulte seu médico antes de usar.</div>
+        </div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-trigger" onclick="toggleAcc(this)">
+          <span class="acc-letter">B</span>
+          <div class="acc-info"><p class="acc-title">Náuseas e vômitos</p><p class="acc-sub">Afetam até 80% das gestantes — sobretudo no 1º trimestre</p></div>
+          <span class="acc-icon">+</span>
+        </button>
+        <div class="acc-body">
+          <p>Refeições pequenas a cada 2–3 horas. Biscoito de água e sal antes de levantar. Evite estômago vazio e odores fortes. Prefira alimentos frios (menos cheiro) e gengibre natural. Hidrate-se entre as refeições. Se vômitos impedirem alimentação por mais de 24h, procure atendimento.</p>
+          <div class="acc-cta">⚕ Náuseas persistentes ou vômitos intensos têm tratamento seguro — consulte seu médico.</div>
+        </div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-trigger" onclick="toggleAcc(this)">
+          <span class="acc-letter">C</span>
+          <div class="acc-info"><p class="acc-title">Cólicas</p><p class="acc-sub">Crescimento uterino e estiramento dos ligamentos</p></div>
+          <span class="acc-icon">+</span>
+        </button>
+        <div class="acc-body">
+          <p>Cólicas leves são normais. Bolsa de água morna (não quente), repouso e mudança de posição trazem alívio. Dor intensa, persistente ou com sangramento exige avaliação médica imediata.</p>
+          <div class="acc-cta">⚕ Dor forte ou sangramento: vá à maternidade ou entre em contato com seu médico.</div>
+        </div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-trigger" onclick="toggleAcc(this)">
+          <span class="acc-letter">D</span>
+          <div class="acc-info"><p class="acc-title">Gases e distensão abdominal</p><p class="acc-sub">Trânsito intestinal mais lento pela progesterona</p></div>
+          <span class="acc-icon">+</span>
+        </button>
+        <div class="acc-body">
+          <p>Fracione as refeições e coma devagar. Reduza alimentos flatulentos (feijão, brócolis, repolho, bebidas gaseificadas). Caminhadas leves estimulam o trânsito. Evite deitar logo após comer. Roupas confortáveis sem apertar o abdome fazem diferença.</p>
+          <div class="acc-cta">⚕ Distensão intensa ou dor persistente merece avaliação médica.</div>
+        </div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-trigger" onclick="toggleAcc(this)">
+          <span class="acc-letter">E</span>
+          <div class="acc-info"><p class="acc-title">Azia e refluxo</p><p class="acc-sub">Esfíncter esofágico relaxado e estômago comprimido pelo útero</p></div>
+          <span class="acc-icon">+</span>
+        </button>
+        <div class="acc-body">
+          <p>Refeições menores e frequentes. Não deite por 2h após comer. Eleve a cabeceira da cama ~15 cm. Evite gordurosos, ácidos (citrus, tomate), café e chocolate. Roupas sem apertar o abdome.</p>
+          <div class="acc-cta">⚕ Sintomas intensos ou persistentes têm tratamento seguro — consulte seu médico.</div>
+        </div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-trigger" onclick="toggleAcc(this)">
+          <span class="acc-letter">F</span>
+          <div class="acc-info"><p class="acc-title">Constipação intestinal</p><p class="acc-sub">Fibras, água e movimento são os pilares</p></div>
+          <span class="acc-icon">+</span>
+        </button>
+        <div class="acc-body">
+          <p>Aumente a ingestão de fibras: frutas com casca, vegetais, grãos integrais. Beba pelo menos 50 mL/kg de peso ao dia. Atividade física regular — caminhada já ajuda. Ameixa, mamão e kiwi são aliados. Evite laxantes sem orientação médica.</p>
+          <div class="acc-cta">⚕ Se não melhorar em 1–2 semanas com dieta, consulte seu médico.</div>
+        </div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-trigger" onclick="toggleAcc(this)">
+          <span class="acc-letter">G</span>
+          <div class="acc-info"><p class="acc-title">Reações alérgicas e rinite</p><p class="acc-sub">Hipertrofia das mucosas pelo estrogênio</p></div>
+          <span class="acc-icon">+</span>
+        </button>
+        <div class="acc-body">
+          <p>Soro fisiológico nasal e umidificação do ambiente são as primeiras medidas. Mantenha filtros do ar-condicionado limpos. Evite poeira, pelos de animais, mofo e fumaça. <strong>Nenhum anti-histamínico ou descongestionante deve ser usado sem orientação médica</strong>.</p>
+          <div class="acc-cta">⚕ Rinite intensa que afeta o sono tem tratamento seguro — fale com seu médico.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAP 03 -->
+<section id="cap3">
+  <div class="container">
+    <div class="ch-wrap">
+      <div class="ch-num-block"><div class="ch-num">03</div><div class="ch-line"></div></div>
+      <div class="ch-content">
+        <p class="ch-eyebrow">Capítulo Três</p>
+        <h2 class="ch-title">Desenvolvimento<br/>do bebê.</h2>
+        <p class="ch-lead">Da semente de papoula à melancia — acompanhe o crescimento por trimestre e saiba como monitorar os movimentos fetais em casa.</p>
+      </div>
+    </div>
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab(this,'t1')">1º Trimestre</button>
+      <button class="tab-btn" onclick="switchTab(this,'t2')">2º Trimestre</button>
+      <button class="tab-btn" onclick="switchTab(this,'t3')">3º Trimestre</button>
+    </div>
+    <div id="t1" class="tab-panel active">
+      <div class="baby-card"><p class="baby-week">4 semanas</p><p class="baby-size">🌸</p><p class="baby-cm">~2 mm · Semente de papoula</p><p class="baby-desc">O coração começa a bater e os principais órgãos começam a se formar.</p></div>
+      <div class="baby-card"><p class="baby-week">8 semanas</p><p class="baby-size">🫐</p><p class="baby-cm">1,6 cm · Mirtilo</p><p class="baby-desc">Todos os órgãos essenciais presentes. Dedos começam a se formar.</p></div>
+      <div class="baby-card"><p class="baby-week">12 semanas</p><p class="baby-size">🍋</p><p class="baby-cm">5,4 cm · Limão</p><p class="baby-desc">O bebê faz movimentos, os rins funcionam e produzem urina.</p></div>
+    </div>
+    <div id="t2" class="tab-panel">
+      <div class="baby-card"><p class="baby-week">16 semanas</p><p class="baby-size">🥑</p><p class="baby-cm">~11 cm · Abacate</p><p class="baby-desc">Movimentos mais coordenados. Você pode começar a sentir levemente.</p></div>
+      <div class="baby-card"><p class="baby-week">20 semanas</p><p class="baby-size">🍌</p><p class="baby-cm">~16 cm · Banana</p><p class="baby-desc">Morfológico do 2º trimestre — avaliação completa da anatomia fetal.</p></div>
+      <div class="baby-card"><p class="baby-week">24 semanas</p><p class="baby-size">🌽</p><p class="baby-cm">~30 cm · Milho</p><p class="baby-desc">Pulmões em desenvolvimento. O bebê já ouve a sua voz.</p></div>
+    </div>
+    <div id="t3" class="tab-panel">
+      <div class="baby-card"><p class="baby-week">28 semanas</p><p class="baby-size">🥦</p><p class="baby-cm">~35 cm · Brócolis</p><p class="baby-desc">Conte os movimentos fetais a partir de agora — mínimo 10 em 2 horas.</p></div>
+      <div class="baby-card"><p class="baby-week">32 semanas</p><p class="baby-size">🥥</p><p class="baby-cm">~42 cm · Coco</p><p class="baby-desc">Unhas, cabelos e gordura subcutânea em formação.</p></div>
+      <div class="baby-card"><p class="baby-week">37–40 semanas</p><p class="baby-size">🍉</p><p class="baby-cm">~50 cm / ~3 kg · Melancia</p><p class="baby-desc">Bebê a termo. Órgãos maduros. Pronto para o grande dia.</p></div>
+    </div>
+    <div class="infobox infobox-success" style="margin-top:1.5rem;">
+      <strong>📊 Monitorando os movimentos fetais — a partir de 28 semanas</strong><br/>
+      Deite-se de lado esquerdo após as refeições e conte movimentos. <strong>Referência: 10 movimentos em até 2 horas.</strong> Qualquer redução perceptível nos movimentos habituais merece atenção imediata — confie na sua percepção e comunique sempre.
+    </div>
+    <table class="data-table" style="margin-top:1.5rem;">
+      <thead><tr><th>Mês</th><th>Semanas</th><th>Trimestre</th></tr></thead>
+      <tbody>
+        <tr><td>1º mês</td><td>1 a 4</td><td><span class="badge badge-1">1º trimestre</span></td></tr>
+        <tr><td>2º mês</td><td>5 a 8</td><td><span class="badge badge-1">1º trimestre</span></td></tr>
+        <tr><td>3º mês</td><td>9 a 13</td><td><span class="badge badge-1">1º trimestre</span></td></tr>
+        <tr><td>4º mês</td><td>14 a 17</td><td><span class="badge badge-2">2º trimestre</span></td></tr>
+        <tr><td>5º mês</td><td>18 a 22</td><td><span class="badge badge-2">2º trimestre</span></td></tr>
+        <tr><td>6º mês</td><td>23 a 27</td><td><span class="badge badge-2">2º trimestre</span></td></tr>
+        <tr><td>7º mês</td><td>28 a 31</td><td><span class="badge badge-3">3º trimestre</span></td></tr>
+        <tr><td>8º mês</td><td>32 a 36</td><td><span class="badge badge-3">3º trimestre</span></td></tr>
+        <tr><td>9º mês</td><td>37 a 41</td><td><span class="badge badge-3">3º trimestre</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- CAP 04 -->
+<section id="cap4">
+  <div class="container">
+    <div class="ch-wrap">
+      <div class="ch-num-block"><div class="ch-num">04</div><div class="ch-line"></div></div>
+      <div class="ch-content">
+        <p class="ch-eyebrow">Capítulo Quatro</p>
+        <h2 class="ch-title">Exames do<br/>pré-natal.</h2>
+        <p class="ch-lead">Calendário completo de exames e consultas — para que nenhuma janela importante seja perdida ao longo da gestação.</p>
+      </div>
+    </div>
+    <div class="period-label">1º Trimestre · Até 13 semanas · Laboratoriais</div>
+    <div class="exam-list">
+      <div class="exam-row"><span class="exam-name">Hemograma completo</span><span class="exam-freq">1ª consulta</span></div>
+      <div class="exam-row"><span class="exam-name">Tipagem ABO/Rh + Coombs indireto</span><span class="exam-freq">1ª consulta</span></div>
+      <div class="exam-row"><span class="exam-name">VDRL ou TPHA (sífilis)</span><span class="exam-freq">1ª consulta · repetir em cada trimestre</span></div>
+      <div class="exam-row"><span class="exam-name">HIV (anti-HIV 1/2)</span><span class="exam-freq">1ª consulta · repetir em cada trimestre</span></div>
+      <div class="exam-row"><span class="exam-name">Toxoplasmose IgG e IgM</span><span class="exam-freq">1ª consulta · se IgG negativo, repetir mensalmente</span></div>
+      <div class="exam-row"><span class="exam-name">Rubéola IgG · HBsAg · Anti-HCV</span><span class="exam-freq">1ª consulta</span></div>
+      <div class="exam-row"><span class="exam-name">TSH · Glicemia em jejum</span><span class="exam-freq">1ª consulta</span></div>
+      <div class="exam-row"><span class="exam-name">EAS + urocultura</span><span class="exam-freq">1ª consulta · repetir mensalmente</span></div>
+    </div>
+    <div class="period-label">1º Trimestre · Ultrassonografias</div>
+    <div class="exam-list">
+      <div class="exam-row"><span class="exam-name">Ultrassom obstétrico</span><span class="exam-freq">6 a 9 semanas — viabilidade, DUM, gemelaridade</span></div>
+      <div class="exam-row"><span class="exam-name">Translucência nucal (TN)</span><span class="exam-freq">11 a 13+6 semanas — rastreio de aneuploidias</span></div>
+    </div>
+    <div class="period-label">2º Trimestre · 14 a 27 semanas</div>
+    <div class="exam-list">
+      <div class="exam-row"><span class="exam-name">Morfológico do 2º trimestre</span><span class="exam-freq">18 a 22 semanas — anatomia fetal completa</span></div>
+      <div class="exam-row"><span class="exam-name">TOTG 75g (curva glicêmica)</span><span class="exam-freq">24 a 28 semanas — rastreio de diabetes gestacional</span></div>
+      <div class="exam-row"><span class="exam-name">Hemograma + EAS · VDRL · HIV</span><span class="exam-freq">2º trimestre — periódico</span></div>
+      <div class="exam-row"><span class="exam-name">Doppler de artérias uterinas</span><span class="exam-freq">20 a 24 semanas — rastreio de pré-eclâmpsia</span></div>
+    </div>
+    <div class="period-label">3º Trimestre · 28 a 40 semanas</div>
+    <div class="exam-list">
+      <div class="exam-row"><span class="exam-name">Ultrassom de 3º trimestre</span><span class="exam-freq">30 a 32 semanas — crescimento, líquido, posição</span></div>
+      <div class="exam-row"><span class="exam-name">Doppler umbilical</span><span class="exam-freq">Conforme indicação — fluxo útero-placentário</span></div>
+      <div class="exam-row"><span class="exam-name">Streptococcus do Grupo B (SGB)</span><span class="exam-freq">35 a 37 semanas — swab vaginal/retal</span></div>
+      <div class="exam-row"><span class="exam-name">Cardiotocografia (CTG)</span><span class="exam-freq">A partir de 36 semanas — bem-estar fetal</span></div>
+      <div class="exam-row"><span class="exam-name">EAS + urocultura · VDRL · HIV</span><span class="exam-freq">3º trimestre — mensal</span></div>
+    </div>
+    <table class="data-table" style="margin-top:1.5rem;">
+      <thead><tr><th>Período</th><th>Frequência</th><th>Total estimado</th></tr></thead>
+      <tbody>
+        <tr><td>Até 28 semanas</td><td>1 consulta por mês</td><td>~6 consultas</td></tr>
+        <tr><td>28 a 36 semanas</td><td>1 consulta a cada 2 semanas</td><td>~4 consultas</td></tr>
+        <tr><td>A partir de 36 semanas</td><td>1 por semana até o parto</td><td>—</td></tr>
+      </tbody>
+    </table>
+    <p class="infobox infobox-brand" style="margin-top:1rem;">Referência: Ministério da Saúde e FEBRASGO — mínimo 7 consultas no pré-natal. Cada consulta conta — não pule.</p>
+  </div>
+</section>
+
+<!-- CAP 05 -->
+<section id="cap5" style="background:var(--bg-warm);">
+  <div class="container">
+    <div class="ch-wrap">
+      <div class="ch-num-block"><div class="ch-num">05</div><div class="ch-line"></div></div>
+      <div class="ch-content">
+        <p class="ch-eyebrow">Capítulo Cinco</p>
+        <h2 class="ch-title">Vitaminas<br/>essenciais.</h2>
+        <p class="ch-lead">A suplementação vitamínica é fundamental para você e seu bebê. O tipo, combinação e dose ideais devem ser orientados pelo seu médico, de acordo com o trimestre e necessidades individuais.</p>
+      </div>
+    </div>
+    <div class="trim-grid">
+      <div class="trim-card">
+        <span class="trim-pill">Até 14 semanas</span>
+        <p class="trim-title">Primeiro trimestre</p>
+        <p class="trim-text">Polivitamínico pré-natal com <strong>metilfolato</strong> — forma ativa do ácido fólico, essencial para prevenir defeitos do tubo neural. Idealmente iniciado antes da concepção. <strong>Vitamina D3</strong> é fundamental nesta fase.</p>
+        <div class="trim-note">Converse com seu médico sobre a suplementação ideal para o seu caso.</div>
+      </div>
+      <div class="trim-card">
+        <span class="trim-pill">Após 14 semanas · Até pós-parto</span>
+        <p class="trim-title">2º e 3º trimestre</p>
+        <p class="trim-text">Complexo completo com <strong>ferro, ácido fólico, vitaminas B, vitamina D e DHA</strong> — crucial para o neurodesenvolvimento fetal. Manter durante a amamentação conforme orientação médica.</p>
+        <div class="trim-note">A suplementação deve continuar no pós-parto e durante a amamentação.</div>
+      </div>
+    </div>
+    <h3 style="font-family:var(--font-serif); font-size:1.5rem; margin-bottom:.5rem; margin-top:2rem;">O papel de cada nutriente</h3>
+    <p style="color:var(--text-muted); margin-bottom:1.25rem; font-size:.88rem;">Por que cada um é indispensável.</p>
+    <div class="nutrient-grid">
+      <div class="nutrient-card"><p class="nutrient-name">Metilfolato</p><p class="nutrient-desc">Previne defeitos do tubo neural — espinha bífida e anencefalia. Iniciar idealmente 3 meses antes da concepção.</p></div>
+      <div class="nutrient-card"><p class="nutrient-name">Ferro</p><p class="nutrient-desc">Previne anemia gestacional e fetal — produção de hemoglobina e energia celular. Demanda aumenta com a gestação.</p></div>
+      <div class="nutrient-card"><p class="nutrient-name">Cálcio</p><p class="nutrient-desc">Desenvolvimento ósseo e dentário do bebê. Especialmente importante se ingestão de laticínios for baixa.</p></div>
+      <div class="nutrient-card"><p class="nutrient-name">DHA (Ômega-3)</p><p class="nutrient-desc">Desenvolvimento cerebral, visual e cognitivo. Presente em peixes gordos e polivitamínicos para gestantes.</p></div>
+      <div class="nutrient-card"><p class="nutrient-name">Vitamina D3</p><p class="nutrient-desc">Absorção de cálcio, função imunológica e prevenção de complicações. Deficiência é comum — suplementação quase universal.</p></div>
+      <div class="nutrient-card"><p class="nutrient-name">Vitamina B12</p><p class="nutrient-desc">Desenvolvimento neurológico fetal. Especialmente importante para vegetarianas e veganas.</p></div>
+    </div>
+    <div class="infobox infobox-warning" style="margin-top:1.5rem;">⚠ Nunca inicie, troque ou interrompa suplementos por conta própria. Excesso de algumas vitaminas pode ser prejudicial. Seu médico indicará o protocolo adequado para o seu momento gestacional.</div>
+  </div>
+</section>
+
+<!-- CAP 06 -->
+<section id="cap6">
+  <div class="container">
+    <div class="ch-wrap">
+      <div class="ch-num-block"><div class="ch-num">06</div><div class="ch-line"></div></div>
+      <div class="ch-content">
+        <p class="ch-eyebrow">Capítulo Seis</p>
+        <h2 class="ch-title">Alimentação<br/>e nutrição.</h2>
+        <p class="ch-lead">Seis refeições equilibradas por dia, hidratação generosa e atenção redobrada à segurança alimentar — esses são os pilares.</p>
+      </div>
+    </div>
+    <h3 style="font-family:var(--font-serif); font-size:1.35rem; margin-bottom:1rem;">Ganho de peso recomendado por IMC</h3>
+    <table class="data-table">
+      <thead><tr><th>IMC pré-gestacional</th><th>Até 13 sem</th><th>Até 27 sem</th><th>Até 40 sem</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Baixo peso</strong> &lt; 18,5</td><td>0,2 a 1,2 kg</td><td>5,6 a 7,2 kg</td><td>9,7 a 12,2 kg</td></tr>
+        <tr><td><strong>Eutrofia</strong> 18,5 – 24,9</td><td>−1,8 a 0,7 kg</td><td>3,1 a 6,3 kg</td><td>8,0 a 12,0 kg</td></tr>
+        <tr><td><strong>Sobrepeso</strong> 25 – 29,9</td><td>−1,6 a −0,05 kg</td><td>2,3 a 3,7 kg</td><td>7,0 a 9,0 kg</td></tr>
+        <tr><td><strong>Obesidade</strong> ≥ 30</td><td>−1,6 a −0,05 kg</td><td>1,1 a 2,7 kg</td><td>5,0 a 7,2 kg</td></tr>
+      </tbody>
+    </table>
+    <h3 style="font-family:var(--font-serif); font-size:1.35rem; margin:2rem 0 1rem;">Alimentos essenciais</h3>
+    <div class="food-grid">
+      <div class="food-card"><p class="food-title">🥩 Proteínas</p><p class="food-text">Carnes magras, peixes, ovos, leguminosas. Whey Protein como complemento.</p></div>
+      <div class="food-card"><p class="food-title">🍞 Carboidratos complexos</p><p class="food-text">Cereais e pães integrais, batata-doce. Energia sustentada e fibras.</p></div>
+      <div class="food-card"><p class="food-title">🥑 Gorduras saudáveis</p><p class="food-text">Abacate, azeite, oleaginosas, peixes gordos. Neurodesenvolvimento.</p></div>
+      <div class="food-card"><p class="food-title">🥦 Frutas & vegetais</p><p class="food-text">Variedade de cores. Mínimo 5 porções diárias.</p></div>
+      <div class="food-card"><p class="food-title">🥛 Laticínios</p><p class="food-text">Leite, queijos e iogurtes pasteurizados. 3 a 4 porções diárias.</p></div>
+      <div class="food-card"><p class="food-title">💧 Hidratação</p><p class="food-text">Mínimo 50 mL/kg/dia. Use a calculadora para saber o seu volume ideal.</p></div>
+    </div>
+    <h3 style="font-family:var(--font-serif); font-size:1.35rem; margin:2rem 0 1rem;">Adoçantes</h3>
+    <div class="sweetener-grid">
+      <div class="sw-card"><p class="sw-label sw-ok">✓ Permitidos</p><p class="sw-item">Sucralose · Stevia · Aspartame</p><p class="sw-item">Eritritol · Xilitol · Acesulfame K</p></div>
+      <div class="sw-card"><p class="sw-label sw-no">✗ Evitar</p><p class="sw-item">Sacarina · Ciclamato</p><p style="font-size:.8rem; color:var(--text-muted); margin-top:.4rem;">Refrigerantes zero e Schweppes contêm ciclamato. Leia o rótulo.</p></div>
+    </div>
+    <div class="infobox infobox-brand">☕ <strong>Cafeína:</strong> até 2 xícaras/dia (150–200 mg). Não fume, não consuma álcool, energéticos ou emagrecedores — não há quantidade segura de álcool na gestação.</div>
+    <h3 style="font-family:var(--font-serif); font-size:1.35rem; margin:2rem 0 1rem;">Segurança alimentar</h3>
+    <div class="avoid-list">
+      <div class="avoid-item"><span class="avoid-icon">⚠</span><span><strong>Sushi e peixes crus:</strong> apenas em locais de ótima procedência, avisando que está gestante.</span></div>
+      <div class="avoid-item"><span class="avoid-icon">⚠</span><span><strong>Vegetais crus fora de casa:</strong> lave em solução clorada (1 colher de sopa de água sanitária/1L de água) por 15 min.</span></div>
+      <div class="avoid-item"><span class="avoid-icon">⚠</span><span><strong>Carnes malpassadas:</strong> cozinhe até não haver partes rosadas — temperatura interna ≥ 70 °C.</span></div>
+      <div class="avoid-item"><span class="avoid-icon">⚠</span><span><strong>Laticínios não pasteurizados:</strong> evite brie, camembert e azuis, salvo se cozidos.</span></div>
+      <div class="avoid-item"><span class="avoid-icon">⚠</span><span><strong>Ovos crus:</strong> evite maionese caseira, mousses e gemada.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CAP 07 -->
+<section id="cap7" style="background:var(--bg-alt);">
+  <div class="container">
+    <div class="ch-wrap">
+      <div class="ch-num-block"><div class="ch-num">07</div><div class="ch-line"></div></div>
+      <div class="ch-content">
+        <p class="ch-eyebrow">Capítulo Sete</p>
+        <h2 class="ch-title">Cuidados, exercícios<br/>&amp; prevenção.</h2>
+        <p class="ch-lead">O cotidiano da gestação — pele, cabelos, sono, saúde mental, viagens, exercícios e pets.</p>
+      </div>
+    </div>
+    <h3 style="font-family:var(--font-serif); font-size:1.35rem; margin-bottom:1rem;">Atividade física aprovada</h3>
+    <div class="cards-auto" style="margin-bottom:2rem;">
+      <div class="card"><div class="card-title">🚶 Caminhadas</div><p class="card-text">Em qualquer trimestre, no seu ritmo.</p></div>
+      <div class="card"><div class="card-title">🏊 Natação</div><p class="card-text">Excelente para circulação e lombares.</p></div>
+      <div class="card"><div class="card-title">🧘 Pilates</div><p class="card-text">Postura e assoalho pélvico.</p></div>
+      <div class="card"><div class="card-title">🏋️ Musculação</div><p class="card-text">Cargas adaptadas, com supervisão.</p></div>
+      <div class="card"><div class="card-title">🌿 Yoga</div><p class="card-text">Bem-estar mental e preparo para o parto.</p></div>
+    </div>
+    <h3 style="font-family:var(--font-serif); font-size:1.35rem; margin-bottom:1rem;">Pele, cabelos & rotina</h3>
+    <div class="cards-2" style="margin-bottom:1.5rem;">
+      <div class="card"><p class="card-title">☀ Proteção solar</p><ul><li>FPS mínimo 30 todos os dias</li><li>Prefira filtros físicos (óxido de zinco)</li><li>Evitar 4-MBC, octocrileno</li></ul></div>
+      <div class="card"><p class="card-title">💧 Hidratação da pele</p><ul><li>Foco nas regiões de estrias</li><li>Óleo de coco e manteigas vegetais — seguros</li><li>Evitar retinoico, salicílico, glicólico</li></ul></div>
+      <div class="card"><p class="card-title">✂ Cabelos</p><ul><li>Coloração: evitar até 16–20 sem; após, longe da raiz, sem amônia</li><li>Alisamentos: absolutamente contraindicados</li><li>Laser: contraindicado. Cera, lâmina: liberados</li></ul></div>
+      <div class="card"><p class="card-title">🌍 Viagens & cotidiano</p><ul><li>Internacional: somente antes das 28 semanas</li><li>Repelentes: DEET até 30% e Icaridina até 20% — seguros</li><li>Pets: não manipule fezes nem caixa de areia</li><li>Cinto de segurança: abaixo da barriga, sempre</li></ul></div>
+    </div>
+    <div class="infobox infobox-success">🛏 <strong>Posição para dormir:</strong> a partir de 28 semanas, prefira o decúbito lateral esquerdo (Sleep On Side). Reduz compressão da veia cava e melhora o fluxo para a placenta.</div>
+    <h3 style="font-family:var(--font-serif); font-size:1.35rem; margin:2rem 0 1rem;">Saúde emocional & mental</h3>
+    <div class="cards-2">
+      <div class="card" style="border-color:var(--success-bg);"><p class="card-title" style="color:var(--success);">✓ Normal</p><p class="card-text">Choro fácil, ansiedade leve, medo do desconhecido — respostas normais às mudanças hormonais. Conversar, movimentar-se e descansar bem fazem diferença real.</p></div>
+      <div class="card" style="border-color:#f0c0c0;"><p class="card-title" style="color:var(--danger);">⚠ Quando buscar ajuda</p><p class="card-text">Tristeza persistente &gt; 2 semanas, perda de interesse, insônia, pensamentos negativos recorrentes. ~15–20% das gestantes desenvolvem depressão ou ansiedade gestacional. Tratamento seguro existe — fale com seu médico.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CAP 08 -->
+<section id="cap8">
+  <div class="container">
+    <div class="ch-wrap">
+      <div class="ch-num-block"><div class="ch-num">08</div><div class="ch-line"></div></div>
+      <div class="ch-content">
+        <p class="ch-eyebrow">Capítulo Oito</p>
+        <h2 class="ch-title">Vacinas — proteção<br/>para você e o bebê.</h2>
+        <p class="ch-lead">Os anticorpos que você produz atravessam a placenta e protegem o recém-nascido nos primeiros meses — quando ele ainda não pode se vacinar.</p>
+      </div>
+    </div>
+    <div class="period-label">A partir da 1ª consulta de pré-natal</div>
+    <div class="vacc-item"><p class="vacc-name">Antitetânica (dT)</p><p class="vacc-desc">Atualização da caderneta. Se nunca vacinada ou esquema incompleto, iniciar ou completar as 3 doses.</p></div>
+    <div class="vacc-item"><p class="vacc-name">Hepatite B</p><p class="vacc-desc">Se Anti-HBs negativo — esquema de 3 doses se não houver imunização anterior comprovada.</p></div>
+    <div class="vacc-item"><p class="vacc-name">Influenza / H1N1</p><p class="vacc-desc">Conforme calendário anual — preferencialmente antes do pico da temporada.</p></div>
+    <div class="period-label">27 a 36 semanas · Preferencialmente 28 semanas</div>
+    <div class="vacc-item"><p class="vacc-name">dTpa — difteria, tétano e coqueluche</p><p class="vacc-desc">Em toda gestação, após 20 semanas. Essencial para proteger o recém-nascido contra coqueluche nos primeiros meses.</p></div>
+    <div class="period-label">32 a 36 semanas</div>
+    <div class="vacc-item"><p class="vacc-name">Abrysvo (VSR — bronquiolite)</p><p class="vacc-desc">Dose única. Protege o bebê contra o vírus sincicial respiratório, principal causa de bronquiolite no 1º ano.</p></div>
+    <div class="period-label">Qualquer momento da gestação</div>
+    <div class="vacc-item"><p class="vacc-name">Covid-19 monovalente</p><p class="vacc-desc">Até 2 doses, com intervalo de 6 meses. Protege contra formas graves — anticorpos transferidos ao bebê.</p></div>
+    <div class="infobox infobox-warning" style="margin-top:1.5rem;">⚠ Tríplice viral, varicela e febre amarela são <strong>contraindicadas</strong> na gestação. Devem ser aplicadas no pós-parto imediato. A amamentação não contraindica nenhuma vacina.</div>
+    <h3 style="font-family:var(--font-serif); font-size:1.35rem; margin:2rem 0 1rem;">Estratégia casulo</h3>
+    <p style="font-size:.88rem; color:var(--text-muted); margin-bottom:1rem;">Proteja o recém-nascido vacinando todos que terão contato próximo.</p>
+    <div class="cards-2">
+      <div class="card"><p class="card-title">Coqueluche (dTpa)</p><p class="card-text">Bloqueio familiar — pais, avós, irmãos e cuidadores.</p></div>
+      <div class="card"><p class="card-title">Influenza anual</p><p class="card-text">Vacinação anual de todos os contactantes do recém-nascido.</p></div>
+      <div class="card"><p class="card-title">Tríplice viral</p><p class="card-text">Verificar imunização dos contactantes — importante diante dos surtos recentes.</p></div>
+      <div class="card"><p class="card-title">Varicela</p><p class="card-text">Contactantes não imunes devem ser vacinados antes do nascimento.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CAP 09 -->
+<section id="cap9" style="background:var(--bg-alt);">
+  <div class="container">
+    <div class="ch-wrap">
+      <div class="ch-num-block"><div class="ch-num">09</div><div class="ch-line"></div></div>
+      <div class="ch-content">
+        <p class="ch-eyebrow">Capítulo Nove</p>
+        <h2 class="ch-title">Parto &<br/>amamentação.</h2>
+        <p class="ch-lead">Sinais de início do trabalho de parto, bolsa da maternidade, vias de parto e preparo para amamentar.</p>
+      </div>
+    </div>
+    <h3 style="font-family:var(--font-serif); font-size:1.35rem; margin-bottom:1rem;">Contrações — Braxton Hicks vs. Trabalho de parto</h3>
+    <div class="cards-2" style="margin-bottom:1.5rem;">
+      <div class="card" style="border-color:var(--border-light);"><p class="card-title" style="color:var(--text-muted);">Braxton Hicks · Não é trabalho de parto</p><ul><li>Irregulares, sem padrão definido</li><li>Não aumentam em intensidade</li><li>Cessam com repouso ou mudança de posição</li><li>Geralmente sem dor — apenas desconforto</li></ul></div>
+      <div class="card" style="border-color:var(--success-bg);"><p class="card-title" style="color:var(--success);">Contrações reais · É trabalho de parto</p><ul><li>Regulares com padrão crescente</li><li>Aumentam em frequência e intensidade</li><li>Não cessam com repouso</li><li>Dor que irradia para as costas</li></ul></div>
+    </div>
+    <div class="infobox infobox-warm" style="margin-bottom:1.5rem;">
+      <strong>Quando ir à maternidade:</strong><br/>
+      ⏱ Regra 5-1-1: contrações a cada 5 min, 1 min de duração, por 1 hora (≥ 37 sem)<br/>
+      💧 Rompimento da bolsa — ir imediatamente<br/>
+      🩸 Sangramento vaginal — ir imediatamente<br/>
+      ⚠ Antes de 37 semanas com contrações regulares — ir imediatamente<br/>
+      <strong>Em dúvida: vá. Melhor ir e voltar do que esperar.</strong>
+    </div>
+    <h3 style="font-family:var(--font-serif); font-size:1.35rem; margin-bottom:1rem;">Bolsa da maternidade — pronta a partir de 36 semanas</h3>
+    <div class="cards-2" style="margin-bottom:2rem;">
+      <div class="card"><p class="card-title">Para você</p><ul><li>Roupas confortáveis (2–3 conjuntos)</li><li>Sutiã de amamentação (2–3 peças)</li><li>Roupa para saída (barriga persiste)</li><li>Absorvente pós-parto noturno</li><li>Itens de higiene · Calçado antiderrapante</li><li>Carregador de celular</li></ul></div>
+      <div class="card"><p class="card-title">Para o bebê</p><ul><li>3–4 macacões (RN e 0–3 meses)</li><li>Gorrinhos e meias</li><li>Manta para aconchego</li><li>Bebê-conforto — obrigatório para a saída</li></ul></div>
+      <div class="card"><p class="card-title">Documentos</p><ul><li>Caderneta de pré-natal</li><li>RG e CPF · RG do acompanhante</li><li>Carteira do plano de saúde</li><li>Plano de parto (se elaborado)</li></ul></div>
+      <div class="card"><p class="card-title">Vias de parto</p><p class="card-text">A melhor via é aquela que oferece mais segurança para você e seu bebê — decidida em conjunto, com base em evidências. Parto vaginal e cesariana têm indicações e vantagens específicas para cada caso.</p></div>
+    </div>
+    <h3 style="font-family:var(--font-serif); font-size:1.35rem; margin-bottom:1rem;">Amamentação — a primeira hora dourada</h3>
+    <div class="cards-2">
+      <div class="card"><p class="card-title">Contato pele a pele</p><p class="card-text">Logo após o nascimento, o bebê é colocado sobre o peito. Regula temperatura, estabiliza o coração e estimula a primeira mamada — o colostro, rico em anticorpos.</p></div>
+      <div class="card"><p class="card-title">Pega correta</p><p class="card-text">Lábios virados para fora, queixo encostado na mama, boca bem aberta. Pega correta evita rachaduras e garante boa transferência de leite.</p></div>
+      <div class="card"><p class="card-title">Aleitamento exclusivo</p><p class="card-text">A OMS recomenda leite materno exclusivo até os 6 meses, mantendo até 2 anos com introdução alimentar a partir do 6º mês.</p></div>
+      <div class="card"><p class="card-title">Dificuldades</p><p class="card-text">Bancos de leite e consultoras de amamentação estão disponíveis. O próprio leite é o melhor hidratante para os mamilos. Banhos de sol curtos ajudam a prevenir rachaduras.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CALCULADORAS -->
+<section id="calcs">
+  <div class="container">
+    <p class="section-eyebrow">Ferramentas interativas</p>
+    <h2 class="section-title">Calculadoras<br/>da gestação.</h2>
+    <p class="section-lead">Personalizadas para acompanhar a sua gestação. Os resultados são orientativos — discuta sempre com seu médico.</p>
+
+    <!-- CALC 1: IG -->
+    <div class="calc-card">
+      <div class="calc-header">
+        <div class="calc-badge">Calculadora 01</div>
+        <h3 class="calc-title">Idade Gestacional & Data Provável do Parto</h3>
+        <p class="calc-desc">Calcule a sua IG atual e a Data Provável do Parto, por DUM ou por ultrassonografia.</p>
+      </div>
+      <div class="radio-group">
+        <label class="radio-opt"><input type="radio" name="ig-method" value="dum" checked onchange="switchIGMethod()"/> Por DUM (Data da Última Menstruação)</label>
+        <label class="radio-opt"><input type="radio" name="ig-method" value="usg" onchange="switchIGMethod()"/> Por Ultrassonografia</label>
+      </div>
+      <div id="dum-fields">
+        <div class="form-row single">
+          <div class="field"><label>Data da Última Menstruação</label><input type="date" id="dum-date"/></div>
+        </div>
+      </div>
+      <div class="usg-fields" id="usg-fields">
+        <div class="form-row triple">
+          <div class="field"><label>Data do Ultrassom</label><input type="date" id="usg-date"/></div>
+          <div class="field"><label>IG no ultrassom (semanas)</label><input type="number" id="usg-weeks" min="4" max="42" placeholder="ex: 12"/></div>
+          <div class="field"><label>Dias adicionais (0–6)</label><input type="number" id="usg-days" min="0" max="6" placeholder="0"/></div>
+        </div>
+      </div>
+      <button class="calc-btn" onclick="calcIG()">Calcular Idade Gestacional</button>
+      <div class="calc-result" id="ig-result">
+        <div class="result-grid">
+          <div class="result-item"><p class="result-num" id="ig-weeks">—</p><p class="result-label">Semanas completas</p></div>
+          <div class="result-item"><p class="result-num" id="ig-days-r">—</p><p class="result-label">Dias adicionais</p></div>
+          <div class="result-item"><p class="result-num" id="ig-trim">—</p><p class="result-label">Trimestre</p></div>
+        </div>
+        <p class="result-sub" id="ig-dpp" style="margin-top:1rem; font-size:.95rem; font-weight:700; color:var(--brand);"></p>
+        <p class="result-sub" id="ig-msg" style="margin-top:.5rem; color:var(--text-muted);"></p>
+      </div>
+    </div>
+
+    <!-- CALC 2: PESO -->
+    <div class="calc-card">
+      <div class="calc-header">
+        <div class="calc-badge">Calculadora 02</div>
+        <h3 class="calc-title">Ganho de Peso Ideal</h3>
+        <p class="calc-desc">Compare seu ganho atual com a faixa esperada para a sua semana gestacional, baseado no IMC pré-gestacional.</p>
+      </div>
+      <div class="form-row triple">
+        <div class="field"><label>Altura (cm)</label><input type="number" id="peso-altura" placeholder="ex: 165" min="140" max="200"/></div>
+        <div class="field"><label>Peso pré-gestacional (kg)</label><input type="number" id="peso-inicial" placeholder="ex: 65" min="35" max="200" step="0.1"/></div>
+        <div class="field"><label>Peso atual (kg)</label><input type="number" id="peso-atual" placeholder="ex: 70" min="35" max="200" step="0.1"/></div>
+      </div>
+      <div class="form-row single">
+        <div class="field"><label>Semana gestacional atual</label><input type="number" id="peso-ig" placeholder="ex: 20" min="1" max="42"/></div>
+      </div>
+      <button class="calc-btn" onclick="calcPeso()">Calcular Ganho de Peso</button>
+      <div class="calc-result" id="peso-result">
+        <div class="result-grid">
+          <div class="result-item"><p class="result-num" id="peso-bmi">—</p><p class="result-label">IMC pré-gestacional</p></div>
+          <div class="result-item"><p class="result-num" id="peso-ganho">—</p><p class="result-label">Ganho atual (kg)</p></div>
+          <div class="result-item"><p class="result-num" id="peso-esperado">—</p><p class="result-label">Faixa esperada (kg)</p></div>
+        </div>
+        <div class="weight-bar-wrap">
+          <div class="weight-bar-label"><span id="bar-min-label">—</span><span>Faixa esperada para a semana</span><span id="bar-max-label">—</span></div>
+          <div class="weight-bar-track">
+            <div class="weight-bar-range" id="bar-range"></div>
+            <div class="weight-bar-dot" id="bar-dot"></div>
+          </div>
+        </div>
+        <div class="weight-status" id="peso-status"></div>
+        <p class="result-sub" id="peso-cat" style="margin-top:.5rem; font-size:.82rem; color:var(--text-muted);"></p>
+      </div>
+    </div>
+
+    <!-- CALC 3: HIDRATAÇÃO -->
+    <div class="calc-card">
+      <div class="calc-header">
+        <div class="calc-badge">Calculadora 03</div>
+        <h3 class="calc-title">Ingesta Hídrica Diária</h3>
+        <p class="calc-desc">Volume de água recomendado por dia baseado no seu peso atual. Referência: 50 mL/kg/dia (FEBRASGO).</p>
+      </div>
+      <div class="form-row single">
+        <div class="field"><label>Peso atual (kg)</label><input type="number" id="hidra-peso" placeholder="ex: 70" min="35" max="200" step="0.1"/></div>
+      </div>
+      <button class="calc-btn" onclick="calcHidra()">Calcular Hidratação</button>
+      <div class="calc-result" id="hidra-result">
+        <div class="hydration-grid">
+          <div class="hydration-item"><p class="hydration-num" id="hidra-ml">—</p><p class="hydration-unit">mL / dia</p></div>
+          <div class="hydration-item"><p class="hydration-num" id="hidra-l">—</p><p class="hydration-unit">Litros / dia</p></div>
+          <div class="hydration-item"><p class="hydration-num" id="hidra-copos">—</p><p class="hydration-unit">Copos de 250 mL</p></div>
+        </div>
+        <p class="result-sub" id="hidra-msg" style="margin-top:1rem;"></p>
+        <div class="infobox infobox-brand" style="margin-top:1rem;">💡 Distribua a ingestão ao longo do dia. Chás, água de coco e sucos naturais contam para a meta. A hidratação adequada contribui para o volume do líquido amniótico e previne infecções urinárias.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ALERTAS -->
+<section id="alerts">
+  <div class="container">
+    <p class="section-eyebrow" style="color:var(--danger);">⚠ Sinais de Alerta</p>
+    <h2 class="section-title">Quando procurar<br/>atendimento imediato.</h2>
+    <p class="section-lead">Em caso de qualquer um destes sinais, comunique seu médico imediatamente e dirija-se à urgência mais próxima.</p>
+    <div class="alert-grid">
+      <div class="alert-card"><p class="alert-icon">🩸</p><p class="alert-title">Sangramento vaginal</p><p class="alert-desc">Qualquer sangramento, especialmente com dor.</p></div>
+      <div class="alert-card"><p class="alert-icon">💧</p><p class="alert-title">Perda de líquido</p><p class="alert-desc">Saída de líquido pela vagina — possível rompimento da bolsa.</p></div>
+      <div class="alert-card"><p class="alert-icon">🔥</p><p class="alert-title">Dor abdominal intensa</p><p class="alert-desc">Forte, persistente, que não cede com repouso.</p></div>
+      <div class="alert-card"><p class="alert-icon">🤯</p><p class="alert-title">Cefaleia intensa</p><p class="alert-desc">Persistente, sem melhora — pode indicar pré-eclâmpsia.</p></div>
+      <div class="alert-card"><p class="alert-icon">👁</p><p class="alert-title">Alterações visuais</p><p class="alert-desc">Visão turva, escotomas, fotofobia.</p></div>
+      <div class="alert-card"><p class="alert-icon">🫸</p><p class="alert-title">Inchaço súbito</p><p class="alert-desc">Edema rápido de mãos, rosto e pernas.</p></div>
+      <div class="alert-card"><p class="alert-icon">🤲</p><p class="alert-title">Menos movimentos</p><p class="alert-desc">Após 28 sem — redução perceptível do movimento do bebê.</p></div>
+      <div class="alert-card"><p class="alert-icon">⏱</p><p class="alert-title">Contrações precoces</p><p class="alert-desc">Antes de 37 semanas — pode ser parto prematuro.</p></div>
+      <div class="alert-card"><p class="alert-icon">🌡</p><p class="alert-title">Febre acima de 38 °C</p><p class="alert-desc">Especialmente persistente ou com outros sintomas.</p></div>
+      <div class="alert-card"><p class="alert-icon">🤮</p><p class="alert-title">Vômitos persistentes</p><p class="alert-desc">Que impedem hidratação por mais de 24 horas.</p></div>
+    </div>
+    <div class="alert-banner">Em caso de dúvida: não espere. Vá à maternidade ou procure atendimento médico imediato.</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <img src="data:image/png;base64,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" alt="Dr. Itamar Santana" class="footer-logo"/>
+    <div class="footer-grid">
+      <div>
+        <p class="footer-col-title">Consultório</p>
+        <p style="font-size:.88rem; color:rgba(255,255,255,.65); line-height:1.8;">ELLAS Saúde Integrada<br/>Rua Padre Roma, 120 · Sala 1601<br/>Tamarineira · Recife, PE</p>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Contato</p>
+        <a href="https://wa.me/5581991839111">(81) 99183-9111</a>
+        <a href="https://dritamarsantana.com">dritamarsantana.com</a>
+        <a href="https://instagram.com/dr.itamarsantana">@dr.itamarsantana</a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Recursos</p>
+        <a href="https://itamarlssf-commits.github.io/Guia-da-gestacao-Itamar/">Guia completo</a>
+        <a href="#calcs">Calculadoras</a>
+        <a href="#toc">Sumário</a>
+      </div>
+    </div>
+    <hr class="footer-divider"/>
+    <div class="footer-badge">📋 Versão pública · Sem prescrições medicamentosas</div>
+    <p class="footer-disclaimer">Guia elaborado com base em diretrizes da FIGO, FEBRASGO, ACOG, Cochrane e UpToDate. Esta versão pública tem caráter educativo e <strong style="color:rgba(255,255,255,.7)">não substitui a consulta médica presencial</strong>. Para prescrições e orientações individualizadas, agende sua consulta. Última atualização: maio de 2026.</p>
+  </div>
+</footer>
+
+<script>
+// PROGRESS & BTT
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+  document.getElementById('progress').style.width = pct + '%';
+  const btt = document.getElementById('btt');
+  if (h.scrollTop > 400) btt.classList.add('visible');
+  else btt.classList.remove('visible');
+});
+
+// DRAWER
+function toggleDrawer() { document.getElementById('nav-drawer').classList.toggle('open'); }
+function closeDrawer() { document.getElementById('nav-drawer').classList.remove('open'); }
+
+// ACCORDION
+function toggleAcc(btn) {
+  const item = btn.closest('.acc-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.acc-item.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+// TABS
+function switchTab(btn, id) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(id).classList.add('active');
+}
+
+// IG METHOD SWITCH
+function switchIGMethod() {
+  const method = document.querySelector('input[name="ig-method"]:checked').value;
+  document.getElementById('dum-fields').style.display = method === 'dum' ? 'block' : 'none';
+  document.getElementById('usg-fields').style.display = method === 'usg' ? 'block' : 'none';
+  document.getElementById('ig-result').classList.remove('visible');
+}
+
+function fmtDate(d) { return d.toLocaleDateString('pt-BR', {day:'2-digit',month:'long',year:'numeric'}); }
+
+// CALC IG
+function calcIG() {
+  const method = document.querySelector('input[name="ig-method"]:checked').value;
+  const today = new Date(); today.setHours(0,0,0,0);
+  let weeks, days, dpp;
+  if (method === 'dum') {
+    const val = document.getElementById('dum-date').value;
+    if (!val) { alert('Informe a Data da Última Menstruação.'); return; }
+    const dum = new Date(val + 'T00:00:00');
+    if (dum > today) { alert('A DUM não pode ser futura.'); return; }
+    const diff = Math.floor((today - dum) / 86400000);
+    if (diff > 294) { alert('IG acima de 42 semanas. Verifique a data.'); return; }
+    weeks = Math.floor(diff / 7); days = diff % 7;
+    dpp = new Date(dum.getTime() + 280 * 86400000);
+  } else {
+    const usgVal = document.getElementById('usg-date').value;
+    const usgW = parseInt(document.getElementById('usg-weeks').value) || 0;
+    const usgD = parseInt(document.getElementById('usg-days').value) || 0;
+    if (!usgVal || !usgW) { alert('Informe data do ultrassom e IG no momento do exame.'); return; }
+    const usgDate = new Date(usgVal + 'T00:00:00');
+    if (usgDate > today) { alert('A data do ultrassom não pode ser futura.'); return; }
+    const daysSince = Math.floor((today - usgDate) / 86400000);
+    const totalNow = (usgW * 7 + usgD) + daysSince;
+    if (totalNow > 294) { alert('IG resultante acima de 42 semanas.'); return; }
+    weeks = Math.floor(totalNow / 7); days = totalNow % 7;
+    dpp = new Date(today.getTime() + (280 - totalNow) * 86400000);
+  }
+  const trim = weeks < 14 ? '1º' : weeks < 28 ? '2º' : '3º';
+  const msgs = { '1º':'Fase de formação dos órgãos. Inicie o pré-natal o quanto antes.', '2º':'Fase mais estável. Morfológico do 2º trimestre se aproxima.', '3º':'Reta final! Prepare a bolsa a partir de 36 semanas.' };
+  document.getElementById('ig-weeks').textContent = weeks;
+  document.getElementById('ig-days-r').textContent = days;
+  document.getElementById('ig-trim').textContent = trim;
+  document.getElementById('ig-dpp').textContent = `📅 Data Provável do Parto: ${fmtDate(dpp)}`;
+  document.getElementById('ig-msg').textContent = msgs[trim];
+  document.getElementById('ig-result').classList.add('visible');
+}
+
+// WEIGHT TABLE
+const WT = {
+  bx: {pts:[[0,[0,0]],[13,[-0.2,1.2]],[27,[5.6,7.2]],[40,[9.7,12.2]]],label:'Baixo peso (IMC < 18,5)'},
+  eu: {pts:[[0,[0,0]],[13,[-1.8,0.7]],[27,[3.1,6.3]],[40,[8.0,12.0]]],label:'Eutrofia (IMC 18,5 – 24,9)'},
+  sp: {pts:[[0,[0,0]],[13,[-1.6,-0.05]],[27,[2.3,3.7]],[40,[7.0,9.0]]],label:'Sobrepeso (IMC 25 – 29,9)'},
+  ob: {pts:[[0,[0,0]],[13,[-1.6,-0.05]],[27,[1.1,2.7]],[40,[5.0,7.2]]],label:'Obesidade (IMC ≥ 30)'}
+};
+function getCategory(bmi) { return bmi<18.5?'bx':bmi<25?'eu':bmi<30?'sp':'ob'; }
+function interpolate(pts, w) {
+  w = Math.max(0, Math.min(40, w));
+  for (let i=1;i<pts.length;i++) {
+    if (w<=pts[i][0]) {
+      const [w0,r0]=pts[i-1],[w1,r1]=pts[i],t=(w-w0)/(w1-w0);
+      return [r0[0]+t*(r1[0]-r0[0]),r0[1]+t*(r1[1]-r0[1])];
+    }
+  }
+  return pts[pts.length-1][1];
+}
+
+function calcPeso() {
+  const h=parseFloat(document.getElementById('peso-altura').value);
+  const wi=parseFloat(document.getElementById('peso-inicial').value);
+  const wa=parseFloat(document.getElementById('peso-atual').value);
+  const ig=parseInt(document.getElementById('peso-ig').value);
+  if (!h||!wi||!wa||!ig) { alert('Preencha todos os campos.'); return; }
+  const bmi=wi/((h/100)**2);
+  const cat=getCategory(bmi);
+  const [minE,maxE]=interpolate(WT[cat].pts,ig);
+  const ganho=wa-wi;
+  document.getElementById('peso-bmi').textContent=bmi.toFixed(1);
+  document.getElementById('peso-ganho').textContent=(ganho>=0?'+':'')+ganho.toFixed(1);
+  document.getElementById('peso-esperado').textContent=`${minE.toFixed(1)} a ${maxE.toFixed(1)}`;
+  document.getElementById('peso-cat').textContent=WT[cat].label;
+  document.getElementById('bar-min-label').textContent=minE.toFixed(1)+' kg';
+  document.getElementById('bar-max-label').textContent=maxE.toFixed(1)+' kg';
+  const minVis=minE-2,maxVis=maxE+2;
+  const pctMin=Math.max(0,Math.min(100,((minE-minVis)/(maxVis-minVis))*100));
+  const pctMax=Math.max(0,Math.min(100,((maxE-minVis)/(maxVis-minVis))*100));
+  const pctDot=Math.max(0,Math.min(100,((ganho-minVis)/(maxVis-minVis))*100));
+  document.getElementById('bar-range').style.left=pctMin+'%';
+  document.getElementById('bar-range').style.width=(pctMax-pctMin)+'%';
+  document.getElementById('bar-dot').style.left=pctDot+'%';
+  const st=document.getElementById('peso-status');
+  if (ganho<minE) { st.className='weight-status status-low'; st.textContent=`⚠ Ganho abaixo do esperado para a semana ${ig} (esperado: ${minE.toFixed(1)} a ${maxE.toFixed(1)} kg). Converse com seu médico.`; }
+  else if (ganho>maxE) { st.className='weight-status status-high'; st.textContent=`⚠ Ganho acima do esperado para a semana ${ig} (esperado: ${minE.toFixed(1)} a ${maxE.toFixed(1)} kg). Converse com seu médico.`; }
+  else { st.className='weight-status status-ok'; st.textContent=`✓ Ganho dentro do esperado para a semana ${ig}. Continue acompanhando com seu médico.`; }
+  document.getElementById('peso-result').classList.add('visible');
+}
+
+function calcHidra() {
+  const p=parseFloat(document.getElementById('hidra-peso').value);
+  if (!p||p<35||p>200) { alert('Informe um peso válido.'); return; }
+  const ml=Math.round(p*50);
+  document.getElementById('hidra-ml').textContent=ml.toLocaleString('pt-BR');
+  document.getElementById('hidra-l').textContent=(ml/1000).toFixed(1);
+  document.getElementById('hidra-copos').textContent=Math.ceil(ml/250);
+  document.getElementById('hidra-msg').textContent=`Equivale a ${(ml/500).toFixed(1)} garrafinhas de 500 mL. Distribua ao longo do dia — evite grandes volumes de uma vez.`;
+  document.getElementById('hidra-result').classList.add('visible');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const today=new Date().toISOString().split('T')[0];
+  ['dum-date','usg-date'].forEach(id=>{ const el=document.getElementById(id); if(el) el.max=today; });
+});
+</script>
+</body>
+</html>
