@@ -501,50 +501,84 @@
       section { break-inside: avoid; padding: 2rem 0; }
     }
   
-    /* ======= WATERMARK ======= */
+    
+    /* diagonal watermark removed */
+    
+    /* ═══ EMOJI BABY CARDS (estilo guia) ═══ */
+    .baby-emoji-wrap {
+      text-align: center;
+      padding: 14px 10px 10px;
+      background: var(--bg-card, #fff);
+      border: 1px solid rgba(227,201,154,.5);
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(58,80,104,.07), inset 0 1px 0 rgba(255,255,255,.8);
+      margin-bottom: 8px;
+      transition: transform .22s;
+    }
+    .baby-emoji-wrap:hover { transform: translateY(-3px); }
+    .be-emoji {
+      font-size: 2.6rem;
+      line-height: 1.1;
+      display: block;
+      margin-bottom: 6px;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,.12));
+    }
+    .be-dot {
+      font-size: 3rem;
+      color: #5a3e28;
+      display: block;
+      line-height: 1.1;
+      margin-bottom: 6px;
+      letter-spacing: 0;
+    }
+    .be-name {
+      font-family: var(--font-serif,'Georgia',serif);
+      font-style: italic;
+      font-size: .85rem;
+      color: var(--brand-dark,#3a5068);
+      margin: 0 0 3px;
+      font-weight: 500;
+    }
+    .be-size {
+      font-size: .72rem;
+      font-weight: 700;
+      color: var(--warm-light,#c9a87c);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin: 0;
+    }
+    .baby-card {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    /* ═══ WATERMARK STRIP ═══ */
     .wm-strip {
       position: fixed;
       bottom: 0;
       left: 0;
       right: 0;
-      height: 20px;
+      height: 26px;
       display: flex;
       align-items: center;
       justify-content: center;
       pointer-events: none;
       z-index: 9997;
-      background: rgba(255,255,255,0);
+      background: rgba(253,248,242,.88);
+      backdrop-filter: blur(8px);
+      border-top: 1px solid rgba(227,201,154,.35);
     }
     .wm-strip span {
-      font-size: 9.5px;
-      color: rgba(58,80,104,0.22);
-      letter-spacing: 0.12em;
+      font-size: 10px;
+      color: rgba(58,80,104,.55);
+      letter-spacing: .10em;
       font-family: var(--font-sans,'Inter',sans-serif);
       text-transform: uppercase;
-      font-weight: 500;
+      font-weight: 600;
     }
     @media print {
-      .wm-strip {
-        position: fixed;
-        bottom: 0;
-        background: transparent;
-      }
-      .wm-strip span { color: rgba(58,80,104,0.35); }
-    }
-    /* Diagonal watermark on page body */
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background-image: repeating-linear-gradient(
-        -45deg,
-        transparent 0px,
-        transparent 120px,
-        rgba(58,80,104,.018) 120px,
-        rgba(58,80,104,.018) 121px
-      );
-      pointer-events: none;
-      z-index: 0;
+      .wm-strip { position: fixed; bottom: 0; background: transparent; }
+      .wm-strip span { color: rgba(58,80,104,.5); }
     }
     </style>
 </head>
@@ -890,58 +924,33 @@
     <div id="t1" class="tab-panel active">
       <div class="baby-card">
         <p class="baby-week">4 semanas</p>
-        <div class="baby-svg-wrap">
-          <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:64px;height:64px;">
-            <circle cx="40" cy="40" r="36" fill="#fdf8f2" stroke="#e3c99a" stroke-width="2"/>
-            <!-- poppy seed - tiny dark oval -->
-            <ellipse cx="40" cy="41" rx="3.5" ry="4.5" fill="#3d2b1a"/>
-            <ellipse cx="39" cy="40" rx="1.2" ry="1.8" fill="#6b4c30" opacity=".6"/>
-            <!-- label -->
-            <text x="40" y="68" text-anchor="middle" font-size="7" fill="#9b7553" font-family="Georgia,serif" font-style="italic">papoula</text>
-          </svg>
+        
+        <div class="baby-emoji-wrap">
+          <span class="be-dot">·</span>
+          <p class="be-name">Semente de papoula</p>
+          <p class="be-size">~2 mm</p>
         </div>
         <p class="baby-cm">~2 mm · Embrião</p>
         <p class="baby-desc">O coração começa a bater e os principais órgãos começam a se formar.</p>
       </div>
       <div class="baby-card">
         <p class="baby-week">8 semanas</p>
-        <div class="baby-svg-wrap">
-          <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:64px;height:64px;">
-            <circle cx="40" cy="40" r="36" fill="#fdf8f2" stroke="#e3c99a" stroke-width="2"/>
-            <!-- blueberry body -->
-            <circle cx="40" cy="43" r="15" fill="#6b5cb5"/>
-            <circle cx="40" cy="43" r="15" fill="none" stroke="#4a3e8a" stroke-width="1.5"/>
-            <!-- crown (calyx) -->
-            <path d="M33,31 Q36,27 40,29 Q44,26 47,31" stroke="#3a5a20" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-            <!-- star center -->
-            <path d="M40,30 L40,33" stroke="#3a5a20" stroke-width="1.5" stroke-linecap="round"/>
-            <!-- highlight -->
-            <circle cx="34" cy="38" r="4" fill="rgba(255,255,255,.22)"/>
-            <text x="40" y="69" text-anchor="middle" font-size="7" fill="#9b7553" font-family="Georgia,serif" font-style="italic">mirtilo</text>
-          </svg>
+        
+        <div class="baby-emoji-wrap">
+          <span class="be-emoji">🫐</span>
+          <p class="be-name">Mirtilo</p>
+          <p class="be-size">1,6 cm</p>
         </div>
         <p class="baby-cm">1,6 cm · Todos os órgãos esboçados</p>
         <p class="baby-desc">Todos os órgãos essenciais presentes. Dedos começam a se formar.</p>
       </div>
       <div class="baby-card">
         <p class="baby-week">12 semanas</p>
-        <div class="baby-svg-wrap">
-          <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:64px;height:64px;">
-            <circle cx="40" cy="40" r="36" fill="#fdf8f2" stroke="#e3c99a" stroke-width="2"/>
-            <!-- lime body -->
-            <circle cx="40" cy="42" r="20" fill="#7dc448"/>
-            <circle cx="40" cy="42" r="20" fill="none" stroke="#5a9030" stroke-width="1.5"/>
-            <!-- segments -->
-            <line x1="40" y1="22" x2="40" y2="62" stroke="#5a9030" stroke-width="1" opacity=".4"/>
-            <line x1="20" y1="42" x2="60" y2="42" stroke="#5a9030" stroke-width="1" opacity=".4"/>
-            <line x1="26" y1="28" x2="54" y2="56" stroke="#5a9030" stroke-width="1" opacity=".3"/>
-            <line x1="54" y1="28" x2="26" y2="56" stroke="#5a9030" stroke-width="1" opacity=".3"/>
-            <!-- stem -->
-            <path d="M40,22 Q43,17 45,15" stroke="#4a7a20" stroke-width="2" fill="none" stroke-linecap="round"/>
-            <!-- highlight -->
-            <circle cx="33" cy="36" r="5" fill="rgba(255,255,255,.22)"/>
-            <text x="40" y="76" text-anchor="middle" font-size="7" fill="#9b7553" font-family="Georgia,serif" font-style="italic">limão</text>
-          </svg>
+        
+        <div class="baby-emoji-wrap">
+          <span class="be-emoji">🍋</span>
+          <p class="be-name">Limão</p>
+          <p class="be-size">5,4 cm</p>
         </div>
         <p class="baby-cm">5,4 cm · Final do 1º trimestre</p>
         <p class="baby-desc">O bebê faz movimentos, os rins funcionam e produzem urina.</p>
@@ -950,72 +959,33 @@
     <div id="t2" class="tab-panel">
       <div class="baby-card">
         <p class="baby-week">16 semanas</p>
-        <div class="baby-svg-wrap">
-          <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:64px;height:64px;">
-            <circle cx="40" cy="40" r="36" fill="#fdf8f2" stroke="#e3c99a" stroke-width="2"/>
-            <!-- avocado outer skin -->
-            <path d="M40,14 Q54,20 55,38 Q55,56 40,64 Q25,56 25,38 Q25,20 40,14 Z" fill="#2d6a2e"/>
-            <!-- inner flesh -->
-            <path d="M40,19 Q51,25 51,38 Q51,53 40,60 Q29,53 29,38 Q29,25 40,19 Z" fill="#8fcc5a"/>
-            <!-- seed/pit -->
-            <ellipse cx="40" cy="40" rx="9" ry="11" fill="#8b5e3c"/>
-            <ellipse cx="40" cy="40" rx="7" ry="9" fill="#a0714a"/>
-            <!-- highlight on skin -->
-            <circle cx="36" cy="30" r="3" fill="rgba(255,255,255,.15)"/>
-            <text x="40" y="77" text-anchor="middle" font-size="7" fill="#9b7553" font-family="Georgia,serif" font-style="italic">abacate</text>
-          </svg>
+        
+        <div class="baby-emoji-wrap">
+          <span class="be-emoji">🥑</span>
+          <p class="be-name">Abacate</p>
+          <p class="be-size">11,6 cm</p>
         </div>
         <p class="baby-cm">~11 cm · Movimentos perceptíveis</p>
         <p class="baby-desc">Movimentos mais coordenados. Você pode começar a sentir levemente.</p>
       </div>
       <div class="baby-card">
         <p class="baby-week">20 semanas</p>
-        <div class="baby-svg-wrap">
-          <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:64px;height:64px;">
-            <circle cx="40" cy="40" r="36" fill="#fdf8f2" stroke="#e3c99a" stroke-width="2"/>
-            <!-- mango shape -->
-            <path d="M40,12 Q58,18 60,36 Q62,52 48,65 Q40,70 32,65 Q18,52 20,36 Q22,18 40,12 Z" fill="#f5a623"/>
-            <path d="M40,12 Q58,18 60,36 Q62,52 48,65 Q40,70 32,65 Q18,52 20,36 Q22,18 40,12 Z" fill="none" stroke="#d4881c" stroke-width="1.5"/>
-            <!-- color variation -->
-            <path d="M40,12 Q52,18 54,30 Q48,18 40,12 Z" fill="#e8520a" opacity=".5"/>
-            <!-- stem -->
-            <path d="M40,12 Q43,6 46,5" stroke="#4a7a20" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-            <!-- leaf -->
-            <path d="M46,5 Q54,3 52,10 Q48,8 46,5 Z" fill="#5a9030"/>
-            <!-- highlight -->
-            <circle cx="34" cy="30" r="6" fill="rgba(255,255,255,.18)"/>
-            <text x="40" y="76" text-anchor="middle" font-size="7" fill="#9b7553" font-family="Georgia,serif" font-style="italic">manga</text>
-          </svg>
+        
+        <div class="baby-emoji-wrap">
+          <span class="be-emoji">🍌</span>
+          <p class="be-name">Banana</p>
+          <p class="be-size">16,4 cm</p>
         </div>
         <p class="baby-cm">~16 cm · Morfológico do 2º trimestre</p>
         <p class="baby-desc">Morfológico do 2º trimestre — avaliação completa da anatomia fetal.</p>
       </div>
       <div class="baby-card">
         <p class="baby-week">24 semanas</p>
-        <div class="baby-svg-wrap">
-          <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:64px;height:64px;">
-            <circle cx="40" cy="40" r="36" fill="#fdf8f2" stroke="#e3c99a" stroke-width="2"/>
-            <!-- corn husk -->
-            <path d="M12,40 Q14,28 22,26 Q30,24 40,24 Q50,24 58,26 Q66,28 68,40 Q66,52 58,54 Q50,56 40,56 Q30,56 22,54 Q14,52 12,40 Z" fill="#d4b44a"/>
-            <!-- kernel rows -->
-            <g fill="#f0c830" opacity=".9">
-              <circle cx="24" cy="37" r="3.5"/><circle cx="31" cy="35" r="3.5"/><circle cx="38" cy="34" r="3.5"/>
-              <circle cx="45" cy="34" r="3.5"/><circle cx="52" cy="35" r="3.5"/><circle cx="59" cy="37" r="3.5"/>
-              <circle cx="24" cy="43" r="3.5"/><circle cx="31" cy="45" r="3.5"/><circle cx="38" cy="46" r="3.5"/>
-              <circle cx="45" cy="46" r="3.5"/><circle cx="52" cy="45" r="3.5"/><circle cx="59" cy="43" r="3.5"/>
-            </g>
-            <!-- kernel lines -->
-            <g stroke="#c8a020" stroke-width=".8" fill="none" opacity=".6">
-              <line x1="24" y1="37" x2="24" y2="43"/><line x1="31" y1="35" x2="31" y2="45"/>
-              <line x1="38" y1="34" x2="38" y2="46"/><line x1="45" y1="34" x2="45" y2="46"/>
-              <line x1="52" y1="35" x2="52" y2="45"/><line x1="59" y1="37" x2="59" y2="43"/>
-            </g>
-            <!-- silk/tassel at right -->
-            <path d="M68,40 Q72,36 74,34" stroke="#c8a020" stroke-width="2" fill="none" stroke-linecap="round"/>
-            <path d="M68,40 Q72,40 75,40" stroke="#c8a020" stroke-width="2" fill="none" stroke-linecap="round"/>
-            <path d="M68,40 Q72,44 74,46" stroke="#c8a020" stroke-width="2" fill="none" stroke-linecap="round"/>
-            <text x="40" y="72" text-anchor="middle" font-size="7" fill="#9b7553" font-family="Georgia,serif" font-style="italic">espiga de milho</text>
-          </svg>
+        
+        <div class="baby-emoji-wrap">
+          <span class="be-emoji">🌽</span>
+          <p class="be-name">Espiga de milho</p>
+          <p class="be-size">~30 cm</p>
         </div>
         <p class="baby-cm">~30 cm · Audição formada</p>
         <p class="baby-desc">Pulmões em desenvolvimento. O bebê já ouve a sua voz.</p>
@@ -1024,67 +994,33 @@
     <div id="t3" class="tab-panel">
       <div class="baby-card">
         <p class="baby-week">28 semanas</p>
-        <div class="baby-svg-wrap">
-          <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:64px;height:64px;">
-            <circle cx="40" cy="40" r="36" fill="#fdf8f2" stroke="#e3c99a" stroke-width="2"/>
-            <!-- eggplant body -->
-            <path d="M40,22 Q54,22 58,36 Q62,50 52,60 Q46,66 40,66 Q34,66 28,60 Q18,50 22,36 Q26,22 40,22 Z" fill="#6b3fa0"/>
-            <path d="M40,22 Q54,22 58,36 Q62,50 52,60 Q46,66 40,66 Q34,66 28,60 Q18,50 22,36 Q26,22 40,22 Z" fill="none" stroke="#4a2a78" stroke-width="1.5"/>
-            <!-- green cap/calyx -->
-            <path d="M28,24 Q34,16 40,20 Q46,16 52,24" stroke="#3a7020" stroke-width="3" fill="none" stroke-linecap="round"/>
-            <path d="M40,18 L40,24" stroke="#3a7020" stroke-width="2.5" stroke-linecap="round"/>
-            <!-- highlight -->
-            <circle cx="32" cy="35" r="7" fill="rgba(255,255,255,.15)"/>
-            <text x="40" y="77" text-anchor="middle" font-size="7" fill="#9b7553" font-family="Georgia,serif" font-style="italic">berinjela</text>
-          </svg>
+        
+        <div class="baby-emoji-wrap">
+          <span class="be-emoji">🥦</span>
+          <p class="be-name">Couve-flor</p>
+          <p class="be-size">37,6 cm</p>
         </div>
         <p class="baby-cm">~35 cm · Início do 3º trimestre</p>
         <p class="baby-desc">Conte os movimentos fetais a partir de agora — mínimo 10 em 2 horas.</p>
       </div>
       <div class="baby-card">
         <p class="baby-week">32 semanas</p>
-        <div class="baby-svg-wrap">
-          <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:64px;height:64px;">
-            <circle cx="40" cy="40" r="36" fill="#fdf8f2" stroke="#e3c99a" stroke-width="2"/>
-            <!-- zucchini body horizontal -->
-            <path d="M8,40 Q10,30 20,28 Q30,26 40,27 Q50,26 60,28 Q70,30 72,40 Q70,50 60,52 Q50,54 40,53 Q30,54 20,52 Q10,50 8,40 Z" fill="#5a9e30"/>
-            <!-- darker stripes -->
-            <path d="M10,35 Q40,33 70,35" stroke="#3a7010" stroke-width="2" fill="none" opacity=".5"/>
-            <path d="M10,45 Q40,47 70,45" stroke="#3a7010" stroke-width="2" fill="none" opacity=".5"/>
-            <!-- flower end (right) -->
-            <path d="M72,40 Q76,36 78,34 M72,40 Q77,40 79,40 M72,40 Q76,44 78,46" stroke="#d4a820" stroke-width="2" fill="none" stroke-linecap="round"/>
-            <!-- stem (left) -->
-            <path d="M8,40 Q4,38 3,36" stroke="#3a7010" stroke-width="2" fill="none" stroke-linecap="round"/>
-            <!-- highlight -->
-            <ellipse cx="35" cy="37" rx="10" ry="4" fill="rgba(255,255,255,.18)"/>
-            <text x="40" y="68" text-anchor="middle" font-size="7" fill="#9b7553" font-family="Georgia,serif" font-style="italic">abobrinha</text>
-          </svg>
+        
+        <div class="baby-emoji-wrap">
+          <span class="be-emoji">🍍</span>
+          <p class="be-name">Abacaxi</p>
+          <p class="be-size">47,4 cm</p>
         </div>
         <p class="baby-cm">~42 cm · Acabamentos finais</p>
         <p class="baby-desc">Unhas, cabelos e gordura subcutânea em formação.</p>
       </div>
       <div class="baby-card">
         <p class="baby-week">37–40 semanas</p>
-        <div class="baby-svg-wrap">
-          <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:64px;height:64px;">
-            <circle cx="40" cy="40" r="36" fill="#fdf8f2" stroke="#e3c99a" stroke-width="2"/>
-            <!-- watermelon outer rind -->
-            <circle cx="40" cy="40" r="28" fill="#4a9020"/>
-            <!-- stripes -->
-            <path d="M22,24 Q30,20 40,20 Q50,20 58,24" stroke="#3a7010" stroke-width="3" fill="none" opacity=".6"/>
-            <path d="M15,34 Q20,28 40,26 Q60,28 65,34" stroke="#3a7010" stroke-width="2" fill="none" opacity=".4"/>
-            <path d="M13,44 Q15,35 40,33 Q65,35 67,44" stroke="#3a7010" stroke-width="2" fill="none" opacity=".3"/>
-            <!-- cut face showing red flesh -->
-            <!-- We'll show the round watermelon, no cut -->
-            <!-- inner lighter rind ring -->
-            <circle cx="40" cy="40" r="22" fill="#e8f5d0" opacity=".3"/>
-            <!-- stem at top -->
-            <path d="M40,12 Q43,6 47,5" stroke="#3a7010" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-            <path d="M40,12 Q37,7 35,6" stroke="#3a7010" stroke-width="2" fill="none" stroke-linecap="round"/>
-            <!-- highlight -->
-            <circle cx="30" cy="30" r="8" fill="rgba(255,255,255,.15)"/>
-            <text x="40" y="76" text-anchor="middle" font-size="7" fill="#9b7553" font-family="Georgia,serif" font-style="italic">melancia</text>
-          </svg>
+        
+        <div class="baby-emoji-wrap">
+          <span class="be-emoji">🍉</span>
+          <p class="be-name">Melancia</p>
+          <p class="be-size">~51 cm</p>
         </div>
         <p class="baby-cm">~50 cm / ~3 kg · Bebê a termo</p>
         <p class="baby-desc">Bebê a termo. Órgãos maduros. Pronto para o grande dia.</p>
@@ -1422,8 +1358,16 @@
   </div>
 </footer>
 
+
+
+
+<!-- Watermark -->
+<div class="wm-strip" aria-hidden="true">
+  <span>Dr. Itamar Santana &nbsp;&bull;&nbsp; CRM/PE 23.569 &nbsp;&bull;&nbsp; dritamarsantana.com</span>
+</div>
+
 <script>
-/* ======= TAB SWITCHING ======= */
+/* ═══ TAB SWITCHING ═══ */
 function switchTab(btn, id) {
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
@@ -1432,7 +1376,7 @@ function switchTab(btn, id) {
   if (panel) panel.classList.add('active');
 }
 
-/* ======= MOBILE DRAWER ======= */
+/* ═══ MOBILE DRAWER ═══ */
 function toggleDrawer() {
   var d = document.getElementById('nav-drawer');
   if (d) d.classList.toggle('open');
@@ -1442,204 +1386,164 @@ function closeDrawer() {
   if (d) d.classList.remove('open');
 }
 
-/* ======= ACCORDION ======= */
+/* ═══ ACCORDION ═══ */
 function toggleAcc(btn) {
   var item = btn.closest('.acc-item');
   if (!item) return;
   var wasOpen = item.classList.contains('open');
-  // Close all in same group
   var parent = item.parentElement;
-  if (parent) {
-    parent.querySelectorAll('.acc-item').forEach(function(i) {
-      i.classList.remove('open');
-    });
-  }
+  if (parent) parent.querySelectorAll('.acc-item').forEach(i => i.classList.remove('open'));
   if (!wasOpen) item.classList.add('open');
 }
 
-/* ======= IG METHOD SWITCH ======= */
+/* ═══ IG METHOD SWITCH ═══ */
 function switchIGMethod() {
   var radios = document.querySelectorAll('input[name="ig-method"]');
   var val = 'dum';
-  radios.forEach(function(r){ if(r.checked) val = r.value; });
-  var dumFields = document.getElementById('dum-fields');
-  var usgFields = document.getElementById('usg-fields');
-  if (dumFields) dumFields.style.display = val === 'dum' ? '' : 'none';
-  if (usgFields) usgFields.style.display = val === 'usg' ? '' : 'none';
+  radios.forEach(r => { if (r.checked) val = r.value; });
+  var dum = document.getElementById('dum-fields');
+  var usg = document.getElementById('usg-fields');
+  if (dum) dum.style.display = val === 'dum' ? '' : 'none';
+  if (usg) usg.style.display = val === 'usg' ? '' : 'none';
 }
 
-/* ======= IG CALCULATOR ======= */
+/* ═══ IG CALCULATOR ═══ */
 function calcIG() {
   var radios = document.querySelectorAll('input[name="ig-method"]');
   var method = 'dum';
-  radios.forEach(function(r){ if(r.checked) method = r.value; });
+  radios.forEach(r => { if (r.checked) method = r.value; });
 
   var today = new Date();
-  var dpp, igDays, igWeeks, igDaysRem, igTrimStr, igMsg;
+  var dpp, igDays;
 
   if (method === 'dum') {
     var dumInput = document.getElementById('dum-date');
-    if (!dumInput || !dumInput.value) {
-      showMsg('ig-msg', 'Informe a data da última menstruação.', 'error'); return;
-    }
+    if (!dumInput || !dumInput.value) { showMsg('ig-msg','Informe a data da última menstruação.','error'); return; }
     var dum = new Date(dumInput.value + 'T00:00:00');
-    if (isNaN(dum.getTime())) {
-      showMsg('ig-msg', 'Data inválida.', 'error'); return;
-    }
+    if (isNaN(dum.getTime())) { showMsg('ig-msg','Data inválida.','error'); return; }
     igDays = Math.floor((today - dum) / 86400000);
     dpp = new Date(dum.getTime() + 280 * 86400000);
   } else {
     var usgDate = document.getElementById('usg-date');
-    var usgWeeks = document.getElementById('usg-weeks');
-    var usgDays = document.getElementById('usg-days');
-    if (!usgDate || !usgDate.value) {
-      showMsg('ig-msg', 'Informe a data do ultrassom.', 'error'); return;
-    }
+    var usgWeeks = parseInt((document.getElementById('usg-weeks')||{value:'0'}).value) || 0;
+    var usgDays  = parseInt((document.getElementById('usg-days')||{value:'0'}).value) || 0;
+    if (!usgDate || !usgDate.value) { showMsg('ig-msg','Informe a data do ultrassom.','error'); return; }
     var usg = new Date(usgDate.value + 'T00:00:00');
-    var wks = parseInt(usgWeeks ? usgWeeks.value : 0) || 0;
-    var dys = parseInt(usgDays ? usgDays.value : 0) || 0;
-    var igAtUsg = wks * 7 + dys;
-    var diffDays = Math.floor((today - usg) / 86400000);
-    igDays = igAtUsg + diffDays;
+    var igAtUsg = usgWeeks * 7 + usgDays;
+    var diff = Math.floor((today - usg) / 86400000);
+    igDays = igAtUsg + diff;
     var dumFromUsg = new Date(usg.getTime() - igAtUsg * 86400000);
     dpp = new Date(dumFromUsg.getTime() + 280 * 86400000);
   }
 
-  if (igDays < 0) {
-    showMsg('ig-msg', 'A data inserida é posterior a hoje. Verifique.', 'error'); return;
-  }
-  if (igDays > 294) {
-    showMsg('ig-msg', 'Idade gestacional maior que 42 semanas. Verifique as datas.', 'warn'); return;
-  }
+  if (igDays < 0) { showMsg('ig-msg','A data é posterior a hoje. Verifique.','error'); return; }
+  if (igDays > 294) { showMsg('ig-msg','Mais de 42 semanas — verifique as datas.','warn'); return; }
 
-  igWeeks = Math.floor(igDays / 7);
-  igDaysRem = igDays % 7;
-
-  if (igWeeks < 14) igTrimStr = '1º Trimestre';
-  else if (igWeeks < 28) igTrimStr = '2º Trimestre';
-  else igTrimStr = '3º Trimestre';
-
+  var igWeeks = Math.floor(igDays / 7);
+  var igDaysR = igDays % 7;
+  var trim = igWeeks < 14 ? '1º Trimestre' : igWeeks < 28 ? '2º Trimestre' : '3º Trimestre';
   var dppStr = dpp.toLocaleDateString('pt-BR');
-  igMsg = 'Tudo parece certo! Consulte seu obstetra para confirmação.';
-  if (igWeeks >= 37) igMsg = '🎉 Gestação a termo! Seu bebê está pronto para nascer em breve.';
-  else if (igWeeks >= 28) igMsg = 'Terceiro trimestre! Prepare o enxoval e o plano de parto.';
-  else if (igWeeks >= 14) igMsg = 'Segundo trimestre! A fase mais tranquila da gestação.';
+  var msg = igWeeks >= 37 ? '🎉 Gestação a termo! Bebê pronto para nascer.' :
+            igWeeks >= 28 ? '3º trimestre. Prepare o enxoval e plano de parto.' :
+            igWeeks >= 14 ? '2º trimestre. A fase mais tranquila da gestação.' :
+            '1º trimestre. Cuide bem de você e do bebê.';
 
   setText('ig-weeks', igWeeks + ' sem');
-  setText('ig-days-r', igDaysRem + ' dia' + (igDaysRem !== 1 ? 's' : ''));
-  setText('ig-trim', igTrimStr);
+  setText('ig-days-r', igDaysR + ' dia' + (igDaysR !== 1 ? 's' : ''));
+  setText('ig-trim', trim);
   setText('ig-dpp', dppStr);
-  showMsg('ig-msg', igMsg, 'ok');
-  showSection('ig-result');
+  showMsg('ig-msg', msg, 'ok');
+  show('ig-result');
 }
 
-/* ======= PESO CALCULATOR ======= */
+/* ═══ PESO CALCULATOR ═══ */
+// HTML IDs: peso-inicial, peso-altura, peso-atual, peso-ig
+// Output IDs: peso-result, peso-bmi, peso-ganho, peso-esperado, bar-dot, bar-range, peso-status, peso-cat
 function calcPeso() {
-  var ppInput = document.getElementById('pp-val');
-  var altInput = document.getElementById('alt-val');
-  var ppAtualInput = document.getElementById('pp-atual-val');
-  
-  if (!ppInput || !ppInput.value || !altInput || !altInput.value) {
-    showMsg('peso-msg', 'Informe o peso pré-gestacional e a altura.', 'error'); return;
+  var ppVal   = document.getElementById('peso-inicial');
+  var altVal  = document.getElementById('peso-altura');
+  if (!ppVal || !ppVal.value || !altVal || !altVal.value) {
+    showMsg('peso-status','Informe o peso pré-gestacional e a altura.','error'); return;
   }
-  
-  var pp = parseFloat(ppInput.value.replace(',','.'));
-  var alt = parseFloat(altInput.value.replace(',','.'));
-  
+  var pp  = parseFloat(ppVal.value.replace(',','.'));
+  var alt = parseFloat(altVal.value.replace(',','.'));
   if (isNaN(pp) || isNaN(alt) || pp <= 0 || alt <= 0) {
-    showMsg('peso-msg', 'Valores inválidos.', 'error'); return;
+    showMsg('peso-status','Valores inválidos.','error'); return;
   }
-  
-  // Height in meters if > 3 (entered as cm)
-  if (alt > 3) alt = alt / 100;
-  
+  if (alt > 3) alt = alt / 100; // cm → m
+
   var bmi = pp / (alt * alt);
-  var bmiStr = bmi.toFixed(1);
-  
   var cat, ganhoMin, ganhoMax;
-  if (bmi < 18.5) { cat = 'Baixo peso'; ganhoMin = 12.5; ganhoMax = 18; }
-  else if (bmi < 25) { cat = 'Peso adequado'; ganhoMin = 11.5; ganhoMax = 16; }
-  else if (bmi < 30) { cat = 'Sobrepeso'; ganhoMin = 7; ganhoMax = 11.5; }
-  else { cat = 'Obesidade'; ganhoMin = 5; ganhoMax = 9; }
-  
-  var ganhoStr = ganhoMin + '–' + ganhoMax + ' kg';
-  
-  setText('peso-bmi', bmiStr);
-  setText('peso-cat', cat);
-  setText('peso-ganho', ganhoStr);
-  setText('peso-esperado', 'Recomendado: ' + ganhoStr);
-  
-  var ppAtualStr = '';
-  if (ppAtualInput && ppAtualInput.value) {
-    var ppAtual = parseFloat(ppAtualInput.value.replace(',','.'));
-    if (!isNaN(ppAtual) && ppAtual > 0) {
-      var ganhoReal = (ppAtual - pp).toFixed(1);
-      ppAtualStr = ' | Ganho atual: ' + ganhoReal + ' kg';
-      // Update bar
-      var pct = Math.min(100, Math.max(0, (ppAtual - pp) / ganhoMax * 100));
-      var barDot = document.getElementById('bar-dot');
-      var barFill = document.getElementById('bar-fill');
-      if (barDot) barDot.style.left = pct + '%';
-      if (barFill) barFill.style.width = pct + '%';
-    }
+  if      (bmi < 18.5) { cat = 'Baixo peso';    ganhoMin = 12.5; ganhoMax = 18; }
+  else if (bmi < 25)   { cat = 'Peso adequado'; ganhoMin = 11.5; ganhoMax = 16; }
+  else if (bmi < 30)   { cat = 'Sobrepeso';     ganhoMin = 7;    ganhoMax = 11.5; }
+  else                 { cat = 'Obesidade';      ganhoMin = 5;    ganhoMax = 9; }
+
+  setText('peso-bmi',     bmi.toFixed(1));
+  setText('peso-cat',     cat);
+  setText('peso-ganho',   ganhoMin + '–' + ganhoMax + ' kg');
+  setText('peso-esperado','Recomendado: ' + ganhoMin + '–' + ganhoMax + ' kg (IMC: ' + bmi.toFixed(1) + ')');
+
+  // Bar dot position (ganho atual se informado)
+  var atualEl = document.getElementById('peso-atual');
+  if (atualEl && atualEl.value) {
+    var ppAtual = parseFloat(atualEl.value.replace(',','.'));
+    var ganhoReal = ppAtual - pp;
+    var pct = Math.min(100, Math.max(0, (ganhoReal / ganhoMax) * 100));
+    var dot = document.getElementById('bar-dot');
+    if (dot) dot.style.left = pct.toFixed(1) + '%';
+    var minLbl = document.getElementById('bar-min-label');
+    var maxLbl = document.getElementById('bar-max-label');
+    if (minLbl) minLbl.textContent = ganhoMin + ' kg';
+    if (maxLbl) maxLbl.textContent = ganhoMax + ' kg';
+    showMsg('peso-status','IMC: ' + bmi.toFixed(1) + ' (' + cat + '). Ganho atual: ' + ganhoReal.toFixed(1) + ' kg','ok');
+  } else {
+    showMsg('peso-status','IMC: ' + bmi.toFixed(1) + ' (' + cat + '). Ganho recomendado: ' + ganhoMin + '–' + ganhoMax + ' kg','ok');
   }
-  
-  showMsg('peso-msg', 'IMC pré-gestacional: ' + bmiStr + ' (' + cat + ')' + ppAtualStr, 'ok');
-  showSection('peso-result');
+  show('peso-result');
 }
 
-/* ======= HIDRATAÇÃO CALCULATOR ======= */
+/* ═══ HIDRATAÇÃO CALCULATOR ═══ */
+// HTML ID: hidra-peso
+// Output IDs: hidra-result, hidra-ml, hidra-l, hidra-copos, hidra-msg
 function calcHidra() {
-  var pesoInput = document.getElementById('peso-hidra');
-  if (!pesoInput || !pesoInput.value) {
-    showMsg('hidra-msg', 'Informe o peso atual.', 'error'); return;
-  }
-  var peso = parseFloat(pesoInput.value.replace(',','.'));
-  if (isNaN(peso) || peso <= 0) {
-    showMsg('hidra-msg', 'Peso inválido.', 'error'); return;
-  }
-  
-  var ml = Math.round(peso * 35 + 300); // +300ml for pregnancy
+  var pesoEl = document.getElementById('hidra-peso');
+  if (!pesoEl || !pesoEl.value) { showMsg('hidra-msg','Informe o peso atual.','error'); return; }
+  var peso = parseFloat(pesoEl.value.replace(',','.'));
+  if (isNaN(peso) || peso <= 0) { showMsg('hidra-msg','Peso inválido.','error'); return; }
+
+  var ml    = Math.round(peso * 35 + 300); // base 35ml/kg + 300ml gestação
   var litros = (ml / 1000).toFixed(1);
-  var copos = Math.round(ml / 250);
-  
-  setText('hidra-result', litros + ' L/dia (' + copos + ' copos de 250ml)');
-  showMsg('hidra-msg', 'Na gestação, adicione +300 ml ao seu consumo habitual. Aumente em dias quentes ou com atividade física.', 'ok');
-  showSection('hidra-section');
+  var copos  = Math.round(ml / 250);
+
+  setText('hidra-ml',   ml + ' mL');
+  setText('hidra-l',    litros + ' L');
+  setText('hidra-copos',copos + ' copos (250 mL cada)');
+  setText('hidra-result', litros + ' litros/dia');
+  showMsg('hidra-msg','Base 35 mL/kg + 300 mL extras de gestação. Aumente em dias quentes ou com atividade física.','ok');
+  show('hidra-result');
 }
 
-/* ======= HELPERS ======= */
-function setText(id, val) {
-  var el = document.getElementById(id);
-  if (el) el.textContent = val;
-}
+/* ═══ HELPERS ═══ */
+function setText(id, val) { var el = document.getElementById(id); if (el) el.textContent = val; }
+function show(id)         { var el = document.getElementById(id); if (el) el.style.display = ''; }
 function showMsg(id, msg, type) {
   var el = document.getElementById(id);
   if (!el) return;
   el.textContent = msg;
-  el.className = 'calc-msg ' + type;
+  el.className   = 'calc-msg ' + type;
   el.style.display = 'block';
 }
-function showSection(id) {
-  var el = document.getElementById(id);
-  if (el) el.style.display = '';
-}
 
-/* ======= INIT ======= */
+/* ═══ INIT ═══ */
 document.addEventListener('DOMContentLoaded', function() {
   switchIGMethod();
-  // Hide result sections initially
-  ['ig-result','peso-result'].forEach(function(id){
+  ['ig-result','peso-result'].forEach(id => {
     var el = document.getElementById(id);
     if (el) el.style.display = 'none';
   });
 });
 </script>
 
-
-<!-- Watermark -->
-<div class="wm-strip" aria-hidden="true">
-  <span>Dr. Itamar Santana &nbsp;&bull;&nbsp; CRM/PE 23.569 &nbsp;&bull;&nbsp; dritamarsantana.com</span>
-</div>
 </body>
 </html>
