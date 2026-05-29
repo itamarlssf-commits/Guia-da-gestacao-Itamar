@@ -1519,14 +1519,14 @@ function calcHidra() {
   setText('hidra-ml',   ml + ' mL');
   setText('hidra-l',    litros + ' L');
   setText('hidra-copos',copos + ' copos (250 mL cada)');
-  setText('hidra-result', litros + ' litros/dia');
+
   showMsg('hidra-msg','Base 35 mL/kg + 300 mL extras de gestação. Aumente em dias quentes ou com atividade física.','ok');
   show('hidra-result');
 }
 
 /* ═══ HELPERS ═══ */
 function setText(id, val) { var el = document.getElementById(id); if (el) el.textContent = val; }
-function show(id)         { var el = document.getElementById(id); if (el) el.style.display = ''; }
+function show(id)         { var el = document.getElementById(id); if (el) { el.style.display = 'block'; el.classList.add('visible'); } }
 function showMsg(id, msg, type) {
   var el = document.getElementById(id);
   if (!el) return;
