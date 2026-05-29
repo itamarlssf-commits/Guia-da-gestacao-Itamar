@@ -463,7 +463,7 @@
       background: linear-gradient(135deg, var(--brand-dark) 0%, var(--brand) 100%);
       color: rgba(255,255,255,.7); padding: 3.5rem 0;
     }
-    .footer-logo { height: 36px; margin-bottom: 1.5rem; filter: brightness(0) invert(1); opacity: .9; }
+    .footer-logo { height: 36px; margin-bottom: 1.5rem; opacity: .92; }
     .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 3rem; margin-bottom: 2.5rem; }
     .footer-col-title { font-size: .72rem; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; color: rgba(255,255,255,.5); margin-bottom: .75rem; }
     .footer-col a { display: block; color: rgba(255,255,255,.65); text-decoration: none; font-size: .86rem; padding: .25rem 0; transition: color .2s; }
@@ -504,16 +504,13 @@
 </head>
 <body>
 
-<!-- BANNER DIRECT -->
-<div id="direct-banner" style="display:none; background:var(--brand); color:#fff; text-align:center; padding:.6rem 1rem; font-size:.84rem; font-family:var(--font-sans); font-weight:500; position:sticky; top:0; z-index:1200;">
-  📲 Recebeu esse guia pelo direct? <strong>Siga o perfil</strong> para mais conteúdo sobre saúde da mulher →&nbsp;<a href="https://instagram.com/dr.itamarsantana" target="_blank" style="color:var(--warm-light); font-weight:700; text-decoration:none;">@dr.itamarsantana</a>
-  <button onclick="document.getElementById('direct-banner').style.display='none'" style="background:none; border:none; color:rgba(255,255,255,.6); cursor:pointer; margin-left:1rem; font-size:.9rem;">✕</button>
+<!-- BANNER INSTAGRAM -->
+<div id="insta-banner" style="background:linear-gradient(90deg,#4d6585,#3a5068); color:#fff; text-align:center; padding:.85rem 1.2rem; font-size:.9rem; font-family:var(--font-sans); font-weight:500; position:sticky; top:0; z-index:1200; box-shadow:0 2px 8px rgba(0,0,0,.18);">
+  <span style="margin-right:.5rem;">✨ Curtiu o conteúdo?</span>
+  <strong>Siga o Dr. Itamar</strong> no Instagram para mais conteúdo exclusivo sobre saúde da mulher e gestação →&nbsp;
+  <a href="https://instagram.com/dr.itamarsantana" target="_blank" style="color:var(--warm-light); font-weight:700; text-decoration:underline; white-space:nowrap;">@dr.itamarsantana</a>
+  <button onclick="this.parentElement.style.display='none'" aria-label="Fechar" style="background:none; border:none; color:rgba(255,255,255,.55); cursor:pointer; margin-left:1.2rem; font-size:1rem; vertical-align:middle;">✕</button>
 </div>
-<script>
-if(window.location.search.includes('direct=1') || document.referrer.includes('instagram')){
-  document.getElementById('direct-banner').style.display='block';
-}
-</script>
 
 <div id="progress"></div>
 <button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
@@ -559,7 +556,7 @@ if(window.location.search.includes('direct=1') || document.referrer.includes('in
       <div>
         <div class="hero-eyebrow">Guia da Gestação · Edição 2026</div>
         <h1 class="hero-title">Um manual<br/><em>essencial</em><br/>para você.</h1>
-        <p class="hero-lead">Cuidadosamente elaborado para acompanhar cada etapa da sua jornada — com informação atualizada, orientação prática e o aconchego que esse momento merece. Atendimento online disponível para gestantes em todo o Brasil e no exterior.</p>
+        <p class="hero-lead">Cuidadosamente elaborado para acompanhar cada etapa da sua jornada — com informação atualizada, orientação prática e o aconchego que esse momento merece. <strong>Atendimento online disponível</strong> para orientações, esclarecimentos de dúvidas e acompanhamento à distância. O exame físico e avaliações presenciais requerem consulta presencial.</p>
         <div class="hero-public-badge" style="background:var(--warm-pale); border:1.5px solid var(--warm-light); border-radius:var(--radius-xs); padding:.5rem 1rem; font-size:.8rem; font-weight:600; color:var(--warm-dark); display:inline-flex; align-items:center; gap:.4rem;">📋 Versão pública educativa · Sem prescrições medicamentosas · Consulte sempre seu médico</div>
         <div class="hero-cta" style="margin-top:1.5rem;">
           <a class="btn-primary" href="#toc">Ver o guia completo</a>
@@ -574,7 +571,7 @@ if(window.location.search.includes('direct=1') || document.referrer.includes('in
           <div class="hero-meta-item"><span class="hm-label">Referências</span><span class="hm-val">FIGO · ACOG · FEBRASGO</span></div>
           <div class="hero-meta-item"><span class="hm-label">Edição</span><span class="hm-val">2026</span></div>
         </div>
-        <a href="https://wa.me/5581991839111" target="_blank" style="display:flex; align-items:center; justify-content:center; gap:.5rem; background:var(--warm-pale); color:var(--warm-dark); border:1.5px solid var(--warm-light); border-radius:var(--radius-xs); padding:.75rem; font-size:.86rem; font-weight:700; text-decoration:none; margin-top:1rem; transition:all .2s;" onmouseover="this.style.background='var(--warm-light)'" onmouseout="this.style.background='var(--warm-pale)'">
+        <a href="https://wa.me/5581991839111?text=Ol%C3%A1%2C+vim+pelo+Guia+da+Gesta%C3%A7%C3%A3o+e+gostaria+de+agendar+uma+consulta" target="_blank" style="display:flex; align-items:center; justify-content:center; gap:.5rem; background:var(--warm-pale); color:var(--warm-dark); border:1.5px solid var(--warm-light); border-radius:var(--radius-xs); padding:.75rem; font-size:.86rem; font-weight:700; text-decoration:none; margin-top:1rem; transition:all .2s;" onmouseover="this.style.background='var(--warm-light)'" onmouseout="this.style.background='var(--warm-pale)'">
           📱 Agendar consulta · (81) 99183-9111
         </a>
         <a href="https://instagram.com/dr.itamarsantana" target="_blank" style="display:flex; align-items:center; justify-content:center; gap:.5rem; background:var(--brand-ghost); color:var(--brand); border:1.5px solid var(--brand-pale); border-radius:var(--radius-xs); padding:.75rem; font-size:.86rem; font-weight:700; text-decoration:none; margin-top:.6rem; transition:all .2s;" onmouseover="this.style.background='var(--brand-pale)'" onmouseout="this.style.background='var(--brand-ghost)'">
@@ -744,19 +741,161 @@ if(window.location.search.includes('direct=1') || document.referrer.includes('in
       <button class="tab-btn" onclick="switchTab(this,'t3')">3º Trimestre</button>
     </div>
     <div id="t1" class="tab-panel active">
-      <div class="baby-card"><p class="baby-week">4 semanas</p><p class="baby-size">🌸</p><p class="baby-cm">~2 mm · Semente de papoula</p><p class="baby-desc">O coração começa a bater e os principais órgãos começam a se formar.</p></div>
-      <div class="baby-card"><p class="baby-week">8 semanas</p><p class="baby-size">🫐</p><p class="baby-cm">1,6 cm · Mirtilo</p><p class="baby-desc">Todos os órgãos essenciais presentes. Dedos começam a se formar.</p></div>
-      <div class="baby-card"><p class="baby-week">12 semanas</p><p class="baby-size">🍋</p><p class="baby-cm">5,4 cm · Limão</p><p class="baby-desc">O bebê faz movimentos, os rins funcionam e produzem urina.</p></div>
+      <div class="baby-card">
+        <p class="baby-week">4 semanas</p>
+        <div class="baby-svg-wrap">
+          <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:64px;height:64px;">
+            <circle cx="40" cy="40" r="36" fill="#fdf8f2" stroke="#e3c99a" stroke-width="2"/>
+            <ellipse cx="40" cy="38" rx="9" ry="11" fill="#c9a87c" opacity=".7"/>
+            <circle cx="40" cy="34" r="6" fill="#b8916a"/>
+            <path d="M34 44 Q40 52 46 44" stroke="#b8916a" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <p class="baby-cm">~2 mm · Embrião</p>
+        <p class="baby-desc">O coração começa a bater e os principais órgãos começam a se formar.</p>
+      </div>
+      <div class="baby-card">
+        <p class="baby-week">8 semanas</p>
+        <div class="baby-svg-wrap">
+          <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:64px;height:64px;">
+            <circle cx="40" cy="40" r="36" fill="#fdf8f2" stroke="#e3c99a" stroke-width="2"/>
+            <ellipse cx="40" cy="36" rx="13" ry="15" fill="#c9a87c" opacity=".6"/>
+            <circle cx="40" cy="30" r="9" fill="#b8916a"/>
+            <circle cx="37" cy="29" r="1.5" fill="#fff" opacity=".7"/>
+            <circle cx="43" cy="29" r="1.5" fill="#fff" opacity=".7"/>
+            <path d="M29 40 Q26 46 28 50" stroke="#b8916a" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <path d="M51 40 Q54 46 52 50" stroke="#b8916a" stroke-width="2" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <p class="baby-cm">1,6 cm · Todos os órgãos esboçados</p>
+        <p class="baby-desc">Todos os órgãos essenciais presentes. Dedos começam a se formar.</p>
+      </div>
+      <div class="baby-card">
+        <p class="baby-week">12 semanas</p>
+        <div class="baby-svg-wrap">
+          <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:64px;height:64px;">
+            <circle cx="40" cy="40" r="36" fill="#fdf8f2" stroke="#e3c99a" stroke-width="2"/>
+            <circle cx="40" cy="28" r="12" fill="#b8916a"/>
+            <ellipse cx="40" cy="46" rx="10" ry="12" fill="#c9a87c" opacity=".75"/>
+            <circle cx="36" cy="26" r="2" fill="#fff" opacity=".7"/>
+            <circle cx="44" cy="26" r="2" fill="#fff" opacity=".7"/>
+            <path d="M25 44 Q21 52 24 58" stroke="#b8916a" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <path d="M55 44 Q59 52 56 58" stroke="#b8916a" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <path d="M34 58 Q40 64 46 58" stroke="#b8916a" stroke-width="2" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <p class="baby-cm">5,4 cm · Final do 1º trimestre</p>
+        <p class="baby-desc">O bebê faz movimentos, os rins funcionam e produzem urina.</p>
+      </div>
     </div>
     <div id="t2" class="tab-panel">
-      <div class="baby-card"><p class="baby-week">16 semanas</p><p class="baby-size">🥑</p><p class="baby-cm">~11 cm · Abacate</p><p class="baby-desc">Movimentos mais coordenados. Você pode começar a sentir levemente.</p></div>
-      <div class="baby-card"><p class="baby-week">20 semanas</p><p class="baby-size">🍌</p><p class="baby-cm">~16 cm · Banana</p><p class="baby-desc">Morfológico do 2º trimestre — avaliação completa da anatomia fetal.</p></div>
-      <div class="baby-card"><p class="baby-week">24 semanas</p><p class="baby-size">🌽</p><p class="baby-cm">~30 cm · Milho</p><p class="baby-desc">Pulmões em desenvolvimento. O bebê já ouve a sua voz.</p></div>
+      <div class="baby-card">
+        <p class="baby-week">16 semanas</p>
+        <div class="baby-svg-wrap">
+          <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:64px;height:64px;">
+            <circle cx="40" cy="40" r="36" fill="#fdf8f2" stroke="#e3c99a" stroke-width="2"/>
+            <circle cx="40" cy="26" r="13" fill="#b8916a"/>
+            <ellipse cx="40" cy="48" rx="11" ry="13" fill="#c9a87c" opacity=".8"/>
+            <circle cx="35.5" cy="24" r="2.2" fill="#fff" opacity=".75"/>
+            <circle cx="44.5" cy="24" r="2.2" fill="#fff" opacity=".75"/>
+            <path d="M24 46 Q19 56 22 63" stroke="#b8916a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <path d="M56 46 Q61 56 58 63" stroke="#b8916a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <path d="M33 61 Q40 68 47 61" stroke="#b8916a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <p class="baby-cm">~11 cm · Movimentos perceptíveis</p>
+        <p class="baby-desc">Movimentos mais coordenados. Você pode começar a sentir levemente.</p>
+      </div>
+      <div class="baby-card">
+        <p class="baby-week">20 semanas</p>
+        <div class="baby-svg-wrap">
+          <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:64px;height:64px;">
+            <circle cx="40" cy="40" r="36" fill="#fdf8f2" stroke="#e3c99a" stroke-width="2"/>
+            <circle cx="40" cy="24" r="14" fill="#b8916a"/>
+            <ellipse cx="40" cy="50" rx="12" ry="14" fill="#c9a87c" opacity=".8"/>
+            <circle cx="35" cy="22" r="2.4" fill="#fff" opacity=".75"/>
+            <circle cx="45" cy="22" r="2.4" fill="#fff" opacity=".75"/>
+            <path d="M40 30 Q40 37 40 40" stroke="#8b6a4a" stroke-width="1.2" fill="none"/>
+            <path d="M22 48 Q17 58 20 66" stroke="#b8916a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <path d="M58 48 Q63 58 60 66" stroke="#b8916a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <path d="M32 64 Q40 72 48 64" stroke="#b8916a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <p class="baby-cm">~16 cm · Morfológico do 2º trimestre</p>
+        <p class="baby-desc">Morfológico do 2º trimestre — avaliação completa da anatomia fetal.</p>
+      </div>
+      <div class="baby-card">
+        <p class="baby-week">24 semanas</p>
+        <div class="baby-svg-wrap">
+          <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:64px;height:64px;">
+            <circle cx="40" cy="40" r="36" fill="#fdf8f2" stroke="#e3c99a" stroke-width="2"/>
+            <circle cx="40" cy="23" r="14" fill="#b8916a"/>
+            <ellipse cx="40" cy="52" rx="13" ry="15" fill="#c9a87c" opacity=".85"/>
+            <circle cx="34.5" cy="21" r="2.5" fill="#fff" opacity=".75"/>
+            <circle cx="45.5" cy="21" r="2.5" fill="#fff" opacity=".75"/>
+            <path d="M21 50 Q15 61 18 69" stroke="#b8916a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <path d="M59 50 Q65 61 62 69" stroke="#b8916a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <path d="M30 67 Q40 75 50 67" stroke="#b8916a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <p class="baby-cm">~30 cm · Audição formada</p>
+        <p class="baby-desc">Pulmões em desenvolvimento. O bebê já ouve a sua voz.</p>
+      </div>
     </div>
     <div id="t3" class="tab-panel">
-      <div class="baby-card"><p class="baby-week">28 semanas</p><p class="baby-size">🥦</p><p class="baby-cm">~35 cm · Brócolis</p><p class="baby-desc">Conte os movimentos fetais a partir de agora — mínimo 10 em 2 horas.</p></div>
-      <div class="baby-card"><p class="baby-week">32 semanas</p><p class="baby-size">🥥</p><p class="baby-cm">~42 cm · Coco</p><p class="baby-desc">Unhas, cabelos e gordura subcutânea em formação.</p></div>
-      <div class="baby-card"><p class="baby-week">37–40 semanas</p><p class="baby-size">🍉</p><p class="baby-cm">~50 cm / ~3 kg · Melancia</p><p class="baby-desc">Bebê a termo. Órgãos maduros. Pronto para o grande dia.</p></div>
+      <div class="baby-card">
+        <p class="baby-week">28 semanas</p>
+        <div class="baby-svg-wrap">
+          <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:64px;height:64px;">
+            <circle cx="40" cy="40" r="36" fill="#fdf8f2" stroke="#e3c99a" stroke-width="2"/>
+            <circle cx="40" cy="22" r="14" fill="#b8916a"/>
+            <ellipse cx="40" cy="53" rx="14" ry="16" fill="#c9a87c" opacity=".9"/>
+            <circle cx="34.5" cy="20" r="2.5" fill="#fff" opacity=".8"/>
+            <circle cx="45.5" cy="20" r="2.5" fill="#fff" opacity=".8"/>
+            <path d="M40 27 Q40 35 40 39" stroke="#8b6a4a" stroke-width="1.5" fill="none"/>
+            <path d="M20 51 Q13 63 16 71" stroke="#b8916a" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M60 51 Q67 63 64 71" stroke="#b8916a" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M30 69 Q40 77 50 69" stroke="#b8916a" stroke-width="3" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <p class="baby-cm">~35 cm · Início do 3º trimestre</p>
+        <p class="baby-desc">Conte os movimentos fetais a partir de agora — mínimo 10 em 2 horas.</p>
+      </div>
+      <div class="baby-card">
+        <p class="baby-week">32 semanas</p>
+        <div class="baby-svg-wrap">
+          <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:64px;height:64px;">
+            <circle cx="40" cy="40" r="36" fill="#fdf8f2" stroke="#e3c99a" stroke-width="2"/>
+            <circle cx="40" cy="21" r="15" fill="#b8916a"/>
+            <ellipse cx="40" cy="55" rx="15" ry="17" fill="#c9a87c" opacity=".9"/>
+            <circle cx="34" cy="19" r="2.7" fill="#fff" opacity=".8"/>
+            <circle cx="46" cy="19" r="2.7" fill="#fff" opacity=".8"/>
+            <path d="M19 52 Q12 65 15 73" stroke="#b8916a" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M61 52 Q68 65 65 73" stroke="#b8916a" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M28 71 Q40 79 52 71" stroke="#b8916a" stroke-width="3" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <p class="baby-cm">~42 cm · Acabamentos finais</p>
+        <p class="baby-desc">Unhas, cabelos e gordura subcutânea em formação.</p>
+      </div>
+      <div class="baby-card">
+        <p class="baby-week">37–40 semanas</p>
+        <div class="baby-svg-wrap">
+          <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:64px;height:64px;">
+            <circle cx="40" cy="40" r="36" fill="#fdf8f2" stroke="#e3c99a" stroke-width="2.5"/>
+            <circle cx="40" cy="21" r="16" fill="#b8916a"/>
+            <ellipse cx="40" cy="56" rx="16" ry="18" fill="#c9a87c"/>
+            <circle cx="34" cy="18" r="3" fill="#fff" opacity=".85"/>
+            <circle cx="46" cy="18" r="3" fill="#fff" opacity=".85"/>
+            <path d="M38 25 Q37 28 38 30" stroke="#fff" stroke-width="1.5" fill="none" opacity=".5"/>
+            <path d="M18 52 Q11 66 14 74" stroke="#b8916a" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+            <path d="M62 52 Q69 66 66 74" stroke="#b8916a" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+            <path d="M27 72 Q40 80 53 72" stroke="#b8916a" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <p class="baby-cm">~50 cm / ~3 kg · Bebê a termo</p>
+        <p class="baby-desc">Bebê a termo. Órgãos maduros. Pronto para o grande dia.</p>
+      </div>
     </div>
     <div class="infobox infobox-success" style="margin-top:1.5rem;">
       <strong>📊 Monitorando os movimentos fetais — a partir de 28 semanas</strong><br/>
@@ -800,11 +939,15 @@ if(window.location.search.includes('direct=1') || document.referrer.includes('in
       <div class="exam-row"><span class="exam-name">Rubéola IgG · HBsAg · Anti-HCV</span><span class="exam-freq">1ª consulta</span></div>
       <div class="exam-row"><span class="exam-name">TSH · Glicemia em jejum</span><span class="exam-freq">1ª consulta</span></div>
       <div class="exam-row"><span class="exam-name">EAS + urocultura</span><span class="exam-freq">1ª consulta · repetir mensalmente</span></div>
+      <div class="exam-row"><span class="exam-name">Perfil de metabolismo do ferro</span><span class="exam-freq">1ª consulta — ferritina, ferro sérico, TIBC (rastreio de anemia ferropriva)</span></div>
     </div>
     <div class="period-label">1º Trimestre · Ultrassonografias</div>
     <div class="exam-list">
       <div class="exam-row"><span class="exam-name">Ultrassom obstétrico</span><span class="exam-freq">6 a 9 semanas — viabilidade, DUM, gemelaridade</span></div>
-      <div class="exam-row"><span class="exam-name">Translucência nucal (TN)</span><span class="exam-freq">11 a 13+6 semanas — rastreio de aneuploidias</span></div>
+      <div class="exam-row"><span class="exam-name">Morfológico do 1º trimestre + Doppler de artérias uterinas</span><span class="exam-freq">11 a 13+6 semanas — rastreio de aneuploidias (inclui TN) e predição de pré-eclâmpsia</span></div>
+    </div>
+    <div class="infobox infobox-brand" style="margin:.5rem 0 1rem;">
+      <strong>📌 Sobre a Translucência Nucal (TN) e pré-eclâmpsia:</strong> A medida da translucência nucal faz parte do Morfológico do 1º trimestre. Associada ao Doppler das artérias uterinas e marcadores séricos (PAPP-A, PlGF), compõe o rastreio combinado de 1º trimestre — que também prediz o risco de pré-eclâmpsia com até 90% de sensibilidade. Converse com seu médico sobre o resultado.
     </div>
     <div class="period-label">2º Trimestre · 14 a 27 semanas</div>
     <div class="exam-list">
@@ -812,13 +955,15 @@ if(window.location.search.includes('direct=1') || document.referrer.includes('in
       <div class="exam-row"><span class="exam-name">TOTG 75g (curva glicêmica)</span><span class="exam-freq">24 a 28 semanas — rastreio de diabetes gestacional</span></div>
       <div class="exam-row"><span class="exam-name">Hemograma + EAS · VDRL · HIV</span><span class="exam-freq">2º trimestre — periódico</span></div>
       <div class="exam-row"><span class="exam-name">Doppler de artérias uterinas</span><span class="exam-freq">20 a 24 semanas — rastreio de pré-eclâmpsia</span></div>
+      <div class="exam-row"><span class="exam-name">Cervicometria (comprimento do colo uterino)</span><span class="exam-freq">18 a 24 semanas — rastreio de colo curto / incompetência istmo-cervical</span></div>
+      <div class="exam-row"><span class="exam-name">Ecocardiograma fetal</span><span class="exam-freq">24 a 28 semanas — avaliação estrutural do coração do bebê</span></div>
     </div>
     <div class="period-label">3º Trimestre · 28 a 40 semanas</div>
     <div class="exam-list">
       <div class="exam-row"><span class="exam-name">Ultrassom de 3º trimestre</span><span class="exam-freq">30 a 32 semanas — crescimento, líquido, posição</span></div>
       <div class="exam-row"><span class="exam-name">Doppler umbilical</span><span class="exam-freq">Conforme indicação — fluxo útero-placentário</span></div>
       <div class="exam-row"><span class="exam-name">Streptococcus do Grupo B (SGB)</span><span class="exam-freq">35 a 37 semanas — swab vaginal/retal</span></div>
-      <div class="exam-row"><span class="exam-name">Cardiotocografia (CTG)</span><span class="exam-freq">A partir de 36 semanas — bem-estar fetal</span></div>
+      <div class="exam-row"><span class="exam-name">Cardiotocografia (CTG)</span><span class="exam-freq">Realizada somente se necessário — avaliação do bem-estar fetal conforme indicação clínica</span></div>
       <div class="exam-row"><span class="exam-name">EAS + urocultura · VDRL · HIV</span><span class="exam-freq">3º trimestre — mensal</span></div>
     </div>
     <table class="data-table" style="margin-top:1.5rem;">
@@ -909,8 +1054,12 @@ if(window.location.search.includes('direct=1') || document.referrer.includes('in
     </div>
     <div class="infobox infobox-brand">☕ <strong>Cafeína:</strong> até 2 xícaras/dia (150–200 mg). Não fume, não consuma álcool, energéticos ou emagrecedores — não há quantidade segura de álcool na gestação.</div>
     <h3 style="font-family:var(--font-serif); font-size:1.35rem; margin:2rem 0 1rem;">Segurança alimentar</h3>
+    <div class="infobox infobox-success" style="margin-bottom:1rem;">
+      <strong>🍣 Sushi na gestação — desmistificando!</strong><br/>
+      Ao contrário do que muitos pensam, <strong>sushi NÃO é proibido na gestação</strong>. Em restaurantes de ótima procedência, com manipulação adequada e peixe de qualidade, o consumo é seguro. Avise ao estabelecimento que está grávida para que tomem os cuidados especiais. Evite apenas peixes com alto teor de mercúrio (tubarão, cavala, cação) e frutos do mar crus em locais de procedência duvidosa.
+    </div>
     <div class="avoid-list">
-      <div class="avoid-item"><span class="avoid-icon">⚠</span><span><strong>Sushi e peixes crus:</strong> apenas em locais de ótima procedência, avisando que está gestante.</span></div>
+      <div class="avoid-item"><span class="avoid-icon">⚠</span><span><strong>Peixes com alto mercúrio:</strong> evitar tubarão, cavala, cação e peixe-espada — independentemente do preparo.</span></div>
       <div class="avoid-item"><span class="avoid-icon">⚠</span><span><strong>Vegetais crus fora de casa:</strong> lave em solução clorada (1 colher de sopa de água sanitária/1L de água) por 15 min.</span></div>
       <div class="avoid-item"><span class="avoid-icon">⚠</span><span><strong>Carnes malpassadas:</strong> cozinhe até não haver partes rosadas — temperatura interna ≥ 70 °C.</span></div>
       <div class="avoid-item"><span class="avoid-icon">⚠</span><span><strong>Laticínios não pasteurizados:</strong> evite brie, camembert e azuis, salvo se cozidos.</span></div>
@@ -930,20 +1079,22 @@ if(window.location.search.includes('direct=1') || document.referrer.includes('in
         <p class="ch-lead">O cotidiano da gestação — pele, cabelos, sono, saúde mental, viagens, exercícios e pets.</p>
       </div>
     </div>
-    <h3 style="font-family:var(--font-serif); font-size:1.35rem; margin-bottom:1rem;">Atividade física aprovada</h3>
+    <h3 style="font-family:var(--font-serif); font-size:1.35rem; margin-bottom:.75rem;">Atividade física na gestação</h3>
+    <p style="font-size:.95rem; color:var(--text-body); margin-bottom:1.2rem; line-height:1.7;">A prática regular de exercícios durante a gestação traz benefícios comprovados: reduz o risco de diabetes gestacional, controla o ganho de peso, diminui dores lombares, melhora o sono e a saúde mental, além de preparar o corpo para o trabalho de parto. A maioria das gestantes sem contraindicação médica pode — e deve — se manter ativa. <strong>É essencial contar com acompanhamento de um profissional de educação física especializado em gestantes</strong>, que irá adaptar a intensidade e os exercícios a cada trimestre com segurança.</p>
     <div class="cards-auto" style="margin-bottom:2rem;">
-      <div class="card"><div class="card-title">🚶 Caminhadas</div><p class="card-text">Em qualquer trimestre, no seu ritmo.</p></div>
-      <div class="card"><div class="card-title">🏊 Natação</div><p class="card-text">Excelente para circulação e lombares.</p></div>
-      <div class="card"><div class="card-title">🧘 Pilates</div><p class="card-text">Postura e assoalho pélvico.</p></div>
-      <div class="card"><div class="card-title">🏋️ Musculação</div><p class="card-text">Cargas adaptadas, com supervisão.</p></div>
-      <div class="card"><div class="card-title">🌿 Yoga</div><p class="card-text">Bem-estar mental e preparo para o parto.</p></div>
+      <div class="card"><div class="card-title">🚶 Caminhadas</div><p class="card-text">Em qualquer trimestre, no seu ritmo. Ideal para começar.</p></div>
+      <div class="card"><div class="card-title">🏊 Natação & hidroginástica</div><p class="card-text">Excelente para circulação, lombares e alívio do peso.</p></div>
+      <div class="card"><div class="card-title">🧘 Pilates</div><p class="card-text">Fortalece o core, melhora postura e assoalho pélvico.</p></div>
+      <div class="card"><div class="card-title">🏋️ Musculação</div><p class="card-text">Cargas adaptadas, com supervisão especializada.</p></div>
+      <div class="card"><div class="card-title">🌿 Yoga gestacional</div><p class="card-text">Bem-estar mental, respiração e preparo para o parto.</p></div>
     </div>
+    <div class="infobox infobox-brand" style="margin-bottom:1.5rem;">⚠️ <strong>Contraindicações:</strong> placenta prévia, ameaça de parto prematuro, pré-eclâmpsia severa e cervicometria alterada podem contraindicar exercícios. Sempre consulte seu obstetra antes de iniciar ou manter a prática.</div>
     <h3 style="font-family:var(--font-serif); font-size:1.35rem; margin-bottom:1rem;">Pele, cabelos & rotina</h3>
     <div class="cards-2" style="margin-bottom:1.5rem;">
       <div class="card"><p class="card-title">☀ Proteção solar</p><ul><li>FPS mínimo 30 todos os dias</li><li>Prefira filtros físicos (óxido de zinco)</li><li>Evitar 4-MBC, octocrileno</li></ul></div>
-      <div class="card"><p class="card-title">💧 Hidratação da pele</p><ul><li>Foco nas regiões de estrias</li><li>Óleo de coco e manteigas vegetais — seguros</li><li>Evitar retinoico, salicílico, glicólico</li></ul></div>
+      <div class="card"><p class="card-title">💧 Hidratação da pele</p><ul><li>Foco nas regiões de estrias: abdome, mama, quadril</li><li>Prefira hidratantes específicos para gestantes (ex.: Manteigas de karité, óleos de rosa mosqueta, vitamina E, Creme Mustela, Palmer's)</li><li>Evitar retinoico, salicílico em alta concentração, ácido glicólico forte</li></ul></div>
       <div class="card"><p class="card-title">✂ Cabelos</p><ul><li>Coloração: evitar até 16–20 sem; após, longe da raiz, sem amônia</li><li>Alisamentos: absolutamente contraindicados</li><li>Laser: contraindicado. Cera, lâmina: liberados</li></ul></div>
-      <div class="card"><p class="card-title">🌍 Viagens & cotidiano</p><ul><li>Internacional: somente antes das 28 semanas</li><li>Repelentes: DEET até 30% e Icaridina até 20% — seguros</li><li>Pets: não manipule fezes nem caixa de areia</li><li>Cinto de segurança: abaixo da barriga, sempre</li></ul></div>
+      <div class="card"><p class="card-title">🌍 Viagens & cotidiano</p><ul><li>Internacional: somente antes das 28 semanas</li><li><strong>Meias de compressão (15–20 mmHg):</strong> essenciais em viagens aéreas acima de 4h — reduzem edema e risco de trombose</li><li>Repelentes: DEET até 30% e Icaridina até 20% — seguros</li><li>Pets: não manipule fezes nem caixa de areia</li><li>Cinto de segurança: abaixo da barriga, sempre</li></ul></div>
     </div>
     <div class="infobox infobox-success">🛏 <strong>Posição para dormir:</strong> a partir de 28 semanas, prefira o decúbito lateral esquerdo (Sleep On Side). Reduz compressão da veia cava e melhora o fluxo para a placenta.</div>
     <h3 style="font-family:var(--font-serif); font-size:1.35rem; margin:2rem 0 1rem;">Saúde emocional & mental</h3>
@@ -1153,173 +1304,28 @@ if(window.location.search.includes('direct=1') || document.referrer.includes('in
 <!-- FOOTER -->
 <footer>
   <div class="container">
-    <img src="data:image/png;base64,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" alt="Dr. Itamar Santana" class="footer-logo"/>
+    <img src="data:image/png;base64,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" alt="Dr. Itamar Santana" class="footer-logo"/>
     <div class="footer-grid">
-      <div>
+      <div class="footer-col">
         <p class="footer-col-title">Consultório</p>
-        <p style="font-size:.88rem; color:rgba(255,255,255,.65); line-height:1.8;">ELLAS Saúde Integrada<br/>Rua Padre Roma, 120 · Sala 1601<br/>Tamarineira · Recife, PE</p>
+        <p style="color:rgba(255,255,255,.65); font-size:.86rem; line-height:1.7;">ELLAS Saúde Integrada<br/>Rua Padre Roma, 120 · Sala 1601<br/>Tamarineira · Recife, PE</p>
       </div>
       <div class="footer-col">
         <p class="footer-col-title">Contato</p>
-        <a href="https://wa.me/5581991839111">(81) 99183-9111</a>
-        <a href="https://dritamarsantana.com">dritamarsantana.com</a>
-        <a href="https://instagram.com/dr.itamarsantana">@dr.itamarsantana</a>
+        <a href="https://wa.me/5581991839111?text=Ol%C3%A1%2C+vim+pelo+Guia+da+Gesta%C3%A7%C3%A3o+e+gostaria+de+agendar+uma+consulta">(81) 99183-9111</a>
+        <a href="https://dritamarsantana.com" target="_blank">dritamarsantana.com</a>
+        <a href="https://instagram.com/dr.itamarsantana" target="_blank">@dr.itamarsantana</a>
       </div>
       <div class="footer-col">
         <p class="footer-col-title">Recursos</p>
-        <a href="https://itamarlssf-commits.github.io/Guia-da-gestacao-Itamar/">Guia completo</a>
         <a href="#calcs">Calculadoras</a>
         <a href="#toc">Sumário</a>
       </div>
     </div>
     <hr class="footer-divider"/>
-    <div class="footer-badge">📋 Versão pública · Sem prescrições medicamentosas</div>
-    <p class="footer-disclaimer">Guia elaborado com base em diretrizes da FIGO, FEBRASGO, ACOG, Cochrane e UpToDate. Esta versão pública tem caráter educativo e <strong style="color:rgba(255,255,255,.7)">não substitui a consulta médica presencial</strong>. Para prescrições e orientações individualizadas, agende sua consulta. Última atualização: maio de 2026.</p>
+    <p class="footer-badge">📋 Versão pública · Sem prescrições medicamentosas</p>
+    <p class="footer-disclaimer">Guia elaborado com base em diretrizes da FIGO, FEBRASGO, ACOG, Cochrane, UpToDate e <strong style="color:rgba(255,255,255,.7)">Ministério da Saúde do Brasil</strong>. Esta versão pública tem caráter educativo e <strong>não substitui a consulta médica presencial</strong>. Para prescrições e orientações individualizadas, agende sua consulta. Última atualização: maio de 2026.</p>
   </div>
 </footer>
-
-<script>
-// PROGRESS & BTT
-window.addEventListener('scroll', () => {
-  const h = document.documentElement;
-  const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
-  document.getElementById('progress').style.width = pct + '%';
-  const btt = document.getElementById('btt');
-  if (h.scrollTop > 400) btt.classList.add('visible');
-  else btt.classList.remove('visible');
-});
-
-// DRAWER
-function toggleDrawer() { document.getElementById('nav-drawer').classList.toggle('open'); }
-function closeDrawer() { document.getElementById('nav-drawer').classList.remove('open'); }
-
-// ACCORDION
-function toggleAcc(btn) {
-  const item = btn.closest('.acc-item');
-  const isOpen = item.classList.contains('open');
-  document.querySelectorAll('.acc-item.open').forEach(i => i.classList.remove('open'));
-  if (!isOpen) item.classList.add('open');
-}
-
-// TABS
-function switchTab(btn, id) {
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById(id).classList.add('active');
-}
-
-// IG METHOD SWITCH
-function switchIGMethod() {
-  const method = document.querySelector('input[name="ig-method"]:checked').value;
-  document.getElementById('dum-fields').style.display = method === 'dum' ? 'block' : 'none';
-  document.getElementById('usg-fields').style.display = method === 'usg' ? 'block' : 'none';
-  document.getElementById('ig-result').classList.remove('visible');
-}
-
-function fmtDate(d) { return d.toLocaleDateString('pt-BR', {day:'2-digit',month:'long',year:'numeric'}); }
-
-// CALC IG
-function calcIG() {
-  const method = document.querySelector('input[name="ig-method"]:checked').value;
-  const today = new Date(); today.setHours(0,0,0,0);
-  let weeks, days, dpp;
-  if (method === 'dum') {
-    const val = document.getElementById('dum-date').value;
-    if (!val) { alert('Informe a Data da Última Menstruação.'); return; }
-    const dum = new Date(val + 'T00:00:00');
-    if (dum > today) { alert('A DUM não pode ser futura.'); return; }
-    const diff = Math.floor((today - dum) / 86400000);
-    if (diff > 294) { alert('IG acima de 42 semanas. Verifique a data.'); return; }
-    weeks = Math.floor(diff / 7); days = diff % 7;
-    dpp = new Date(dum.getTime() + 280 * 86400000);
-  } else {
-    const usgVal = document.getElementById('usg-date').value;
-    const usgW = parseInt(document.getElementById('usg-weeks').value) || 0;
-    const usgD = parseInt(document.getElementById('usg-days').value) || 0;
-    if (!usgVal || !usgW) { alert('Informe data do ultrassom e IG no momento do exame.'); return; }
-    const usgDate = new Date(usgVal + 'T00:00:00');
-    if (usgDate > today) { alert('A data do ultrassom não pode ser futura.'); return; }
-    const daysSince = Math.floor((today - usgDate) / 86400000);
-    const totalNow = (usgW * 7 + usgD) + daysSince;
-    if (totalNow > 294) { alert('IG resultante acima de 42 semanas.'); return; }
-    weeks = Math.floor(totalNow / 7); days = totalNow % 7;
-    dpp = new Date(today.getTime() + (280 - totalNow) * 86400000);
-  }
-  const trim = weeks < 14 ? '1º' : weeks < 28 ? '2º' : '3º';
-  const msgs = { '1º':'Fase de formação dos órgãos. Inicie o pré-natal o quanto antes.', '2º':'Fase mais estável. Morfológico do 2º trimestre se aproxima.', '3º':'Reta final! Prepare a bolsa a partir de 36 semanas.' };
-  document.getElementById('ig-weeks').textContent = weeks;
-  document.getElementById('ig-days-r').textContent = days;
-  document.getElementById('ig-trim').textContent = trim;
-  document.getElementById('ig-dpp').textContent = `📅 Data Provável do Parto: ${fmtDate(dpp)}`;
-  document.getElementById('ig-msg').textContent = msgs[trim];
-  document.getElementById('ig-result').classList.add('visible');
-}
-
-// WEIGHT TABLE
-const WT = {
-  bx: {pts:[[0,[0,0]],[13,[-0.2,1.2]],[27,[5.6,7.2]],[40,[9.7,12.2]]],label:'Baixo peso (IMC < 18,5)'},
-  eu: {pts:[[0,[0,0]],[13,[-1.8,0.7]],[27,[3.1,6.3]],[40,[8.0,12.0]]],label:'Eutrofia (IMC 18,5 – 24,9)'},
-  sp: {pts:[[0,[0,0]],[13,[-1.6,-0.05]],[27,[2.3,3.7]],[40,[7.0,9.0]]],label:'Sobrepeso (IMC 25 – 29,9)'},
-  ob: {pts:[[0,[0,0]],[13,[-1.6,-0.05]],[27,[1.1,2.7]],[40,[5.0,7.2]]],label:'Obesidade (IMC ≥ 30)'}
-};
-function getCategory(bmi) { return bmi<18.5?'bx':bmi<25?'eu':bmi<30?'sp':'ob'; }
-function interpolate(pts, w) {
-  w = Math.max(0, Math.min(40, w));
-  for (let i=1;i<pts.length;i++) {
-    if (w<=pts[i][0]) {
-      const [w0,r0]=pts[i-1],[w1,r1]=pts[i],t=(w-w0)/(w1-w0);
-      return [r0[0]+t*(r1[0]-r0[0]),r0[1]+t*(r1[1]-r0[1])];
-    }
-  }
-  return pts[pts.length-1][1];
-}
-
-function calcPeso() {
-  const h=parseFloat(document.getElementById('peso-altura').value);
-  const wi=parseFloat(document.getElementById('peso-inicial').value);
-  const wa=parseFloat(document.getElementById('peso-atual').value);
-  const ig=parseInt(document.getElementById('peso-ig').value);
-  if (!h||!wi||!wa||!ig) { alert('Preencha todos os campos.'); return; }
-  const bmi=wi/((h/100)**2);
-  const cat=getCategory(bmi);
-  const [minE,maxE]=interpolate(WT[cat].pts,ig);
-  const ganho=wa-wi;
-  document.getElementById('peso-bmi').textContent=bmi.toFixed(1);
-  document.getElementById('peso-ganho').textContent=(ganho>=0?'+':'')+ganho.toFixed(1);
-  document.getElementById('peso-esperado').textContent=`${minE.toFixed(1)} a ${maxE.toFixed(1)}`;
-  document.getElementById('peso-cat').textContent=WT[cat].label;
-  document.getElementById('bar-min-label').textContent=minE.toFixed(1)+' kg';
-  document.getElementById('bar-max-label').textContent=maxE.toFixed(1)+' kg';
-  const minVis=minE-2,maxVis=maxE+2;
-  const pctMin=Math.max(0,Math.min(100,((minE-minVis)/(maxVis-minVis))*100));
-  const pctMax=Math.max(0,Math.min(100,((maxE-minVis)/(maxVis-minVis))*100));
-  const pctDot=Math.max(0,Math.min(100,((ganho-minVis)/(maxVis-minVis))*100));
-  document.getElementById('bar-range').style.left=pctMin+'%';
-  document.getElementById('bar-range').style.width=(pctMax-pctMin)+'%';
-  document.getElementById('bar-dot').style.left=pctDot+'%';
-  const st=document.getElementById('peso-status');
-  if (ganho<minE) { st.className='weight-status status-low'; st.textContent=`⚠ Ganho abaixo do esperado para a semana ${ig} (esperado: ${minE.toFixed(1)} a ${maxE.toFixed(1)} kg). Converse com seu médico.`; }
-  else if (ganho>maxE) { st.className='weight-status status-high'; st.textContent=`⚠ Ganho acima do esperado para a semana ${ig} (esperado: ${minE.toFixed(1)} a ${maxE.toFixed(1)} kg). Converse com seu médico.`; }
-  else { st.className='weight-status status-ok'; st.textContent=`✓ Ganho dentro do esperado para a semana ${ig}. Continue acompanhando com seu médico.`; }
-  document.getElementById('peso-result').classList.add('visible');
-}
-
-function calcHidra() {
-  const p=parseFloat(document.getElementById('hidra-peso').value);
-  if (!p||p<35||p>200) { alert('Informe um peso válido.'); return; }
-  const ml=Math.round(p*50);
-  document.getElementById('hidra-ml').textContent=ml.toLocaleString('pt-BR');
-  document.getElementById('hidra-l').textContent=(ml/1000).toFixed(1);
-  document.getElementById('hidra-copos').textContent=Math.ceil(ml/250);
-  document.getElementById('hidra-msg').textContent=`Equivale a ${(ml/500).toFixed(1)} garrafinhas de 500 mL. Distribua ao longo do dia — evite grandes volumes de uma vez.`;
-  document.getElementById('hidra-result').classList.add('visible');
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  const today=new Date().toISOString().split('T')[0];
-  ['dum-date','usg-date'].forEach(id=>{ const el=document.getElementById(id); if(el) el.max=today; });
-});
-</script>
 </body>
 </html>
