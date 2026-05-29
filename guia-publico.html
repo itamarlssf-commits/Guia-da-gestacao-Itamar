@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Guia da Gestação · Dr. Itamar Santana · 2026</title>
-  <meta name="description" content="Guia educativo completo sobre gestação. Com calculadoras de idade gestacional, ganho de peso e hidratação."/>
+  <title>Guia da Gestação — Dr. Itamar Santana | Ginecologista e Obstetra Recife-PE</title>
+  <meta name="description" content="Guia completo de gestação com pré-natal semana a semana, exames por trimestre, calculadoras de idade gestacional e ganho de peso. Dr. Itamar Santana — Ginecologista Recife."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Nunito+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
@@ -13,59 +13,59 @@
        BRAND TOKENS — Dr. Itamar Santana
        ════════════════════════════════════════ */
     :root {
-      /* Primary — Steel Blue */
-      --brand-dark:    #3a5068;
-      --brand:         #4d6585;
-      --brand-mid:     #7a99b2;
-      --brand-light:   #b8cdd8;
-      --brand-pale:    #dde8ef;
-      --brand-ghost:   #f0f5f8;
-
-      /* Warm — Sand & Taupe */
-      --warm-dark:     #6e5545;
-      --warm:          #8a6d58;
-      --warm-mid:      #b59a82;
-      --warm-light:    #e3c99a;
-      --warm-pale:     #f5ede0;
-      --warm-ghost:    #fdf8f2;
-
-      /* Semantic */
-      --success:       #2d7d5a;
-      --success-bg:    #d4ede3;
-      --warning:       #a06020;
-      --warning-bg:    #fdecd0;
-      --danger:        #b02020;
-      --danger-bg:     #fde0e0;
-      --info:          var(--brand);
-      --info-bg:       var(--brand-ghost);
-
-      /* Text */
-      --text:          #1e2c38;
-      --text-secondary:#4a5e6a;
-      --text-muted:    #7a909e;
-      --text-light:    #aabbc6;
-
-      /* Surface */
-      --bg:            #ffffff;
-      --bg-alt:        #f7f9fb;
-      --bg-warm:       var(--warm-ghost);
-      --border:        #d8e4eb;
-      --border-light:  #ebf1f5;
-
-      /* Type */
-      --font-serif:    'Cormorant Garamond', Georgia, serif;
-      --font-sans:     'Nunito Sans', -apple-system, sans-serif;
-
-      /* Geometry */
-      --radius:        16px;
-      --radius-sm:     10px;
-      --radius-xs:     6px;
-
-      /* Shadow */
-      --shadow-sm:     0 1px 4px rgba(58,80,104,.07);
-      --shadow:        0 4px 16px rgba(58,80,104,.10);
-      --shadow-lg:     0 12px 40px rgba(58,80,104,.15);
-    }
+  /* New brand palette — Dr. Itamar Santana */
+  --brand-dark:    #2C4A5A;
+  --brand:         #3a5f75;
+  --brand-mid:     #6B8FA0;
+  --brand-light:   #A8C4D0;
+  --brand-pale:    #D5E6ED;
+  --brand-ghost:   #EEF5F8;
+  
+  --sage:          #7D9B76;
+  --sage-light:    #B5C9B1;
+  --sage-pale:     #E8F0E6;
+  
+  --gold:          #C9A96E;
+  --gold-dark:     #A8874A;
+  --gold-light:    #E0C99A;
+  --gold-pale:     #F5EDD8;
+  
+  --warm-dark:     #6e5545;
+  --warm:          #8a6d58;
+  --warm-mid:      #b59a82;
+  --warm-light:    #E8D5C4;
+  --warm-pale:     #F8F2EC;
+  --warm-ghost:    #FDF8F2;
+  
+  --success:       #2d7d5a;
+  --success-bg:    #d4ede3;
+  --warning:       #a06020;
+  --warning-bg:    #fdecd0;
+  --danger:        #b02020;
+  --danger-bg:     #fde0e0;
+  
+  --text:          #1e2c38;
+  --text-secondary:#4a5e6a;
+  --text-muted:    #7a909e;
+  --text-light:    #aabbc6;
+  
+  --bg:            #F8F5F0;
+  --bg-alt:        #F0ECE6;
+  --bg-warm:       var(--warm-ghost);
+  --border:        #D8E4EB;
+  --border-light:  #EBF1F5;
+  
+  --font-serif:    'Cormorant Garamond', Georgia, serif;
+  --font-sans:     'Nunito Sans', -apple-system, sans-serif;
+  
+  --radius:        16px;
+  --radius-sm:     10px;
+  --radius-xs:     6px;
+  
+  --shadow-sm:     0 1px 4px rgba(44,74,90,.07);
+  --shadow:        0 4px 16px rgba(44,74,90,.10);
+  --shadow-lg:     0 12px 40px rgba(44,74,90,.15);
+}
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; font-size: 16px; }
@@ -80,7 +80,7 @@
     /* ── PROGRESS ── */
     #progress {
       position: fixed; top: 0; left: 0; height: 3px; z-index: 1100;
-      background: linear-gradient(90deg, var(--brand), var(--warm-light));
+      background: linear-gradient(90deg, var(--brand), var(--brand-light));
       width: 0%; transition: width .12s ease; border-radius: 0 2px 2px 0;
     }
 
@@ -96,6 +96,20 @@
     }
     #btt.visible { opacity: 1; transform: translateY(0); }
     #btt:hover { background: var(--brand-dark); }
+    /* ── AGENDAMENTO FLUTUANTE ── */
+    #agendar-btn {
+      position: fixed; bottom: 5rem; right: 1.5rem; z-index: 900;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      color: #fff; border: none; border-radius: 50px;
+      padding: .7rem 1.1rem; font-family: var(--font-sans);
+      font-size: .8rem; font-weight: 700; cursor: pointer;
+      box-shadow: 0 4px 20px rgba(169,135,74,.40);
+      display: flex; align-items: center; gap: .4rem;
+      transition: all .3s; text-decoration: none;
+      white-space: nowrap;
+    }
+    #agendar-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(169,135,74,.50); }
+
 
     /* ── NAV ── */
     nav {
@@ -387,13 +401,13 @@
     .vacc-desc { font-size: .84rem; color: var(--text-secondary); line-height: 1.6; }
 
     /* ── ALERT SECTION ── */
-    #alerts { background: #fff9f9; }
+    #alerts { background: #F5E6E6; border-top: 3px solid #e8a0a0; border-bottom: 3px solid #e8a0a0; }
     .alert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: .75rem; margin-bottom: 1.5rem; }
-    .alert-card { border: 1.5px solid #f0c0c0; border-radius: var(--radius-sm); padding: 1.1rem; background: #fff; }
+    .alert-card { border: 2px solid #e8a0a0; border-radius: var(--radius-sm); padding: 1.25rem; background: #fff; }
     .alert-card:hover { border-color: var(--danger); }
-    .alert-icon { font-size: 1.4rem; margin-bottom: .4rem; }
-    .alert-title { font-weight: 700; font-size: .88rem; margin-bottom: .3rem; }
-    .alert-desc { font-size: .81rem; color: var(--text-secondary); line-height: 1.6; }
+    .alert-icon { font-size: 2rem; margin-bottom: .5rem; }
+    .alert-title { font-weight: 700; font-size: .92rem; margin-bottom: .35rem; color: #8B1A1A; }
+    .alert-desc { font-size: .83rem; color: var(--text-secondary); line-height: 1.65; }
     .alert-banner { background: var(--danger-bg); border: 1.5px solid #f0a0a0; border-radius: var(--radius-sm); padding: 1.25rem 1.5rem; font-size: .9rem; color: var(--danger); font-weight: 600; text-align: center; }
 
     /* ── CALCULADORAS ── */
@@ -581,6 +595,15 @@
       .wm-strip span { color: rgba(58,80,104,.5); }
     }
     </style>
+  <!-- SEO & Open Graph -->
+  <meta property="og:title" content="Guia da Gestação — Dr. Itamar Santana"/>
+  <meta property="og:description" content="Guia educativo completo: bebê semana a semana, exames por trimestre, calculadoras personalizadas e sinais de alerta. Gratuito."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://guia-da-gestacao-itamar.vercel.app"/>
+  <meta property="og:image" content="https://guia-da-gestacao-itamar.vercel.app/og-image.jpg"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="keywords" content="pré-natal Recife, gestação semana a semana, Dr. Itamar Santana, ginecologista Recife, guia gestação, gravidez saudável"/>
+  <link rel="canonical" href="https://guia-da-gestacao-itamar.vercel.app"/>
 </head>
 <body>
 
@@ -588,12 +611,16 @@
 <div id="insta-banner" style="background:linear-gradient(90deg,#4d6585,#3a5068); color:#fff; text-align:center; padding:.85rem 1.2rem; font-size:.9rem; font-family:var(--font-sans); font-weight:500; position:sticky; top:0; z-index:1200; box-shadow:0 2px 8px rgba(0,0,0,.18);">
   <span style="margin-right:.5rem;">✨ Curtiu o conteúdo?</span>
   <strong>Siga o Dr. Itamar</strong> no Instagram para mais conteúdo exclusivo sobre saúde da mulher e gestação →&nbsp;
-  <a href="https://instagram.com/dr.itamarsantana" target="_blank" style="color:var(--warm-light); font-weight:700; text-decoration:underline; white-space:nowrap;">@dr.itamarsantana</a>
+  <a href="https://instagram.com/dr.itamarsantana?utm_source=guia&utm_medium=site&utm_campaign=guia_gestacao" target="_blank" style="color:var(--warm-light); font-weight:700; text-decoration:underline; white-space:nowrap;">@dr.itamarsantana</a>
   <button onclick="this.parentElement.style.display='none'" aria-label="Fechar" style="background:none; border:none; color:rgba(255,255,255,.55); cursor:pointer; margin-left:1.2rem; font-size:1rem; vertical-align:middle;">✕</button>
 </div>
 
 <div id="progress"></div>
 <button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<a id="agendar-btn" href="https://wa.me/5581991839111?text=Ol%C3%A1%2C+vim+pelo+Guia+da+Gesta%C3%A7%C3%A3o+e+gostaria+de+agendar+uma+consulta&utm_source=guia&utm_medium=site&utm_campaign=guia_gestacao" target="_blank" rel="noopener">
+  📲 Agendar consulta
+</a>
+
 
 <!-- NAV -->
 <nav>
@@ -654,7 +681,7 @@
         <a href="https://wa.me/5581991839111?text=Ol%C3%A1%2C+vim+pelo+Guia+da+Gesta%C3%A7%C3%A3o+e+gostaria+de+agendar+uma+consulta" target="_blank" style="display:flex; align-items:center; justify-content:center; gap:.5rem; background:var(--warm-pale); color:var(--warm-dark); border:1.5px solid var(--warm-light); border-radius:var(--radius-xs); padding:.75rem; font-size:.86rem; font-weight:700; text-decoration:none; margin-top:1rem; transition:all .2s;" onmouseover="this.style.background='var(--warm-light)'" onmouseout="this.style.background='var(--warm-pale)'">
           📱 Agendar consulta · (81) 99183-9111
         </a>
-        <a href="https://instagram.com/dr.itamarsantana" target="_blank" style="display:flex; align-items:center; justify-content:center; gap:.5rem; background:var(--brand-ghost); color:var(--brand); border:1.5px solid var(--brand-pale); border-radius:var(--radius-xs); padding:.75rem; font-size:.86rem; font-weight:700; text-decoration:none; margin-top:.6rem; transition:all .2s;" onmouseover="this.style.background='var(--brand-pale)'" onmouseout="this.style.background='var(--brand-ghost)'">
+        <a href="https://instagram.com/dr.itamarsantana?utm_source=guia&utm_medium=site&utm_campaign=guia_gestacao" target="_blank" style="display:flex; align-items:center; justify-content:center; gap:.5rem; background:var(--brand-ghost); color:var(--brand); border:1.5px solid var(--brand-pale); border-radius:var(--radius-xs); padding:.75rem; font-size:.86rem; font-weight:700; text-decoration:none; margin-top:.6rem; transition:all .2s;" onmouseover="this.style.background='var(--brand-pale)'" onmouseout="this.style.background='var(--brand-ghost)'">
           📲 Seguir no Instagram · @dr.itamarsantana
         </a>
       </div>
@@ -1332,6 +1359,32 @@
 </section>
 
 <!-- FOOTER -->
+
+<!-- COMPARTILHAMENTO HÍBRIDO -->
+<section id="compartilhar" style="background: var(--gold-pale); border-top: 2px solid var(--gold-light); padding: 3rem 0;">
+  <div class="container" style="text-align:center; max-width:600px;">
+    <div style="font-size:2rem; margin-bottom:.75rem;">💛</div>
+    <h3 style="font-family:var(--font-serif); font-size:1.8rem; margin-bottom:.75rem; color:var(--brand-dark);">Conhece alguém grávida?</h3>
+    <p style="color:var(--text-secondary); font-size:.95rem; line-height:1.8; margin-bottom:1.5rem;">
+      Manda o perfil do Dr. Itamar para ela comentar <strong>GUIA</strong> e receber este guia também. 💛
+    </p>
+    <div style="display:flex; gap:.75rem; justify-content:center; flex-wrap:wrap;">
+      <a href="https://wa.me/?text=Conhece+alguém+grávida?+Segue+o+perfil+do+Dr.+Itamar+no+Instagram+e+comenta+GUIA+pra+receber+o+Guia+da+Gestação+gratuito!+%F0%9F%92%9B+https://instagram.com/dr.itamarsantana?utm_source=guia%26utm_medium=share%26utm_campaign=guia_gestacao" 
+         target="_blank" rel="noopener"
+         style="display:inline-flex;align-items:center;gap:.4rem;background:#25D366;color:#fff;padding:.75rem 1.3rem;border-radius:50px;font-size:.88rem;font-weight:700;text-decoration:none;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.531 5.862L0 24l6.318-1.498A11.96 11.96 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.001-1.365l-.359-.212-3.724.883.938-3.63-.235-.372A9.82 9.82 0 012.182 12c0-5.421 4.397-9.818 9.818-9.818 5.421 0 9.818 4.397 9.818 9.818 0 5.421-4.397 9.818-9.818 9.818z"/></svg>
+        Compartilhar no WhatsApp
+      </a>
+      <a href="https://instagram.com/dr.itamarsantana?utm_source=guia&utm_medium=site&utm_campaign=guia_gestacao" target="_blank" rel="noopener"
+         style="display:inline-flex;align-items:center;gap:.4rem;background:var(--brand-dark);color:#fff;padding:.75rem 1.3rem;border-radius:50px;font-size:.88rem;font-weight:700;text-decoration:none;">
+        📱 Ver perfil no Instagram
+      </a>
+    </div>
+    <p style="margin-top:1.25rem;font-size:.8rem;color:var(--text-muted);">
+      <a href="#" onclick="window.print();return false;" style="color:var(--text-muted);text-decoration:underline;font-size:.8rem;">Baixar PDF</a>
+    </p>
+  </div>
+</section>
 <footer>
   <div class="container">
     <img src="data:image/png;base64,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" alt="Dr. Itamar Santana" class="footer-logo"/>
@@ -1344,7 +1397,7 @@
         <p class="footer-col-title">Contato</p>
         <a href="https://wa.me/5581991839111?text=Ol%C3%A1%2C+vim+pelo+Guia+da+Gesta%C3%A7%C3%A3o+e+gostaria+de+agendar+uma+consulta">(81) 99183-9111</a>
         <a href="https://dritamarsantana.com" target="_blank">dritamarsantana.com</a>
-        <a href="https://instagram.com/dr.itamarsantana" target="_blank">@dr.itamarsantana</a>
+        <a href="https://instagram.com/dr.itamarsantana?utm_source=guia&utm_medium=site&utm_campaign=guia_gestacao" target="_blank">@dr.itamarsantana</a>
       </div>
       <div class="footer-col">
         <p class="footer-col-title">Recursos</p>
