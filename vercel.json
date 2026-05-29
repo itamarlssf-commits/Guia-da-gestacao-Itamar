@@ -1,0 +1,27 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/", "destination": "/guia-publico.html" },
+    { "source": "/guia", "destination": "/guia-publico.html" }
+  ],
+  "redirects": [
+    { "source": "/index.html", "destination": "/guia-publico.html", "permanent": false },
+    { "source": "/index",      "destination": "/guia-publico.html", "permanent": false }
+  ],
+  "headers": [
+    {
+      "source": "/guia-publico.html",
+      "headers": [
+        { "key": "X-Robots-Tag",   "value": "index, follow" },
+        { "key": "Cache-Control",  "value": "public, max-age=300, stale-while-revalidate=60" }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Frame-Options",        "value": "SAMEORIGIN" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" }
+      ]
+    }
+  ]
+}
