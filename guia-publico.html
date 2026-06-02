@@ -1,6 +1,28 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XP72H1D2CY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XP72H1D2CY', {
+      page_title: document.title,
+      page_location: window.location.href
+    });
+    // Rastrear clique no WhatsApp como conversão
+    document.addEventListener('click', function(e) {
+      var el = e.target.closest('a[href*="wa.me"]');
+      if (el) {
+        gtag('event', 'whatsapp_click', {
+          event_category: 'contato',
+          event_label: el.href
+        });
+      }
+    });
+  </script>
+
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Guia da Gestação — Dr. Itamar Santana | Ginecologista e Obstetra Recife-PE</title>
